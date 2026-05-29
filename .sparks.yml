@@ -1,0 +1,34 @@
+# sparks per-repo configuration
+# See https://github.com/subhashmahimaluri/sparks for the full schema (SCHEMA.md / README.md).
+
+profile: nextjs            # UI / Next.js agents only
+version: latest            # or pin a tag like "v0.1.0"
+
+adapters:                  # IDE-native agent files to render
+  - claude                 # .claude/agents, skills, commands
+  - copilot                # .github/agents
+
+mcp: true                  # render a single .vscode/mcp.json (browser/OAuth login)
+
+# Project-specific path policy (overrides profile defaults).
+# Advisory for IDE runs; enforced for autonomous runs.
+paths_allowlist:
+  - "app/**/*.{ts,tsx,js,jsx,css,md}"
+  - "src/**/*.{ts,tsx,js,jsx,css,md}"
+  - "components/**/*.{ts,tsx}"
+  - "**/*.test.{ts,tsx}"
+  - "**/__tests__/**"
+  - "*.md"
+
+paths_denylist:
+  - ".github/workflows/**"
+  - "**/.env*"
+  - "**/secrets/**"
+  - "package-lock.json"
+  - "pnpm-lock.yaml"
+
+# Budget caps for autonomous (spark-direct) runs.
+budgets:
+  max_iterations: 5
+  cost_cap_usd: 2.0
+  tool_budget: 30
