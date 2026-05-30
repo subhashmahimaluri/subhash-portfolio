@@ -2,6 +2,8 @@
 
 A personal portfolio website built with Next.js.
 
+For more details on the project structure, see [architecture.md](architecture.md).
+
 ## Getting Started
 
 First, install the dependencies:
