@@ -1,34 +1,35 @@
 # sparks per-repo configuration
-# See https://github.com/subhashmahimaluri/sparks for the full schema (SCHEMA.md / README.md).
+# See https://github.com/subhashmahimaluri/sparks for full schema
 
-profile: nextjs            # UI / Next.js agents only
-version: latest            # or pin a tag like "v0.1.0"
+profile: nextjs   # ui | qa | bff | backend | nextjs
+version: latest                # or a tag like "v0.1.0"
 
-adapters:                  # IDE-native agent files to render
-  - claude                 # .claude/agents, skills, commands
-  - copilot                # .github/agents
+adapters:                      # IDE-native agent files to render
+  - claude
+  - copilot
 
-mcp: true                  # render a single .vscode/mcp.json (browser/OAuth login)
+mcp: true                     # render a single .vscode/mcp.json from shared/integrations
 
-# Project-specific path policy (overrides profile defaults).
-# Advisory for IDE runs; enforced for autonomous runs.
+# Optional: project-specific path policy (overrides profile defaults)
 paths_allowlist:
   - "app/**/*.{ts,tsx,js,jsx,css,md}"
   - "src/**/*.{ts,tsx,js,jsx,css,md}"
   - "components/**/*.{ts,tsx}"
   - "**/*.test.{ts,tsx}"
-  - "**/__tests__/**"
-  - "*.md"
 
 paths_denylist:
   - ".github/workflows/**"
   - "**/.env*"
   - "**/secrets/**"
-  - "package-lock.json"
-  - "pnpm-lock.yaml"
 
-# Budget caps for autonomous (spark-direct) runs.
+# Optional: budget caps for autonomous runs
 budgets:
   max_iterations: 5
   cost_cap_usd: 2.0
   tool_budget: 30
+
+# Optional: integration hints. The ADO org is injected into .vscode/mcp.json.
+integrations:
+  ado:
+    org: subbumahimaluri
+    project: Subhash Board
