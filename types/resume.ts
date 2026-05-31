@@ -88,6 +88,13 @@ export interface CountryOverrides {
 
 export type Country = 'india' | 'uae' | 'germany' | 'uk' | 'eu';
 
+export interface CountryOverride extends Partial<BaseResumeData> {
+  truncateExperience?: number;
+  maxPages?: number;
+  // Allows for additional fields specific to an override that are not in BaseResumeData
+  [key: string]: unknown;
+}
+
 export const COUNTRIES: Record<Country, string> = {
   'india': 'India',
   'uae': 'UAE / Dubai',
