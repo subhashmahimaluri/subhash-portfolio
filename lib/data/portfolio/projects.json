@@ -1,0 +1,72 @@
+[
+  {
+    "id": "nextjs-microservices-migration",
+    "title": "Enterprise Microservices Migration",
+    "company": "Tech Corp Solutions",
+    "role": "Senior Full Stack Engineer",
+    "duration": "2021-01-01 - present",
+    "description": "Led the architectural overhaul of a legacy monolith into a modern Next.js ecosystem.",
+    "challenges": ["Faced significant technical debt and performance bottlenecks in the legacy system."],
+    "solutions": ["Implemented a modular microservices architecture with Next.js and optimized data fetching."],
+    "impact": ["Improved overall system performance by 40% and reduced deployment times."],
+    "technologies": ["Next.js", "TypeScript", "Microservices", "Docker"],
+    "category": "enterprise",
+    "featured": true
+  },
+  {
+    "id": "ai-visualization-dashboard",
+    "title": "Real-time AI Insights Dashboard",
+    "company": "Tech Corp Solutions",
+    "role": "Senior Full Stack Engineer",
+    "duration": "2021-06-01 - 2022-12-31",
+    "description": "Built a real-time data visualization platform for AI-driven analytics.",
+    "challenges": ["Handling high-frequency data streams without UI lag."],
+    "solutions": ["Utilized Socket.io for real-time communication and D3.js for efficient rendering."],
+    "impact": ["Enabled stakeholders to make data-driven decisions with sub-second latency."],
+    "technologies": ["React", "Socket.io", "D3.js", "Node.js"],
+    "category": "ai-ml",
+    "featured": true
+  },
+  {
+    "id": "ecommerce-platform-optimization",
+    "title": "High-Traffic E-commerce Core",
+    "company": "InnovateSoft",
+    "role": "Software Engineer",
+    "duration": "2018-06-01 - 2020-12-31",
+    "description": "Developed and optimized core features for a global e-commerce platform.",
+    "challenges": ["Slow database queries impacting user conversion rates."],
+    "solutions": ["Refactored PostgreSQL queries and implemented Redis caching layers."],
+    "impact": ["Reduced page load times by 25% and increased checkout completion by 15%."],
+    "technologies": ["React", "Redux", "PostgreSQL", "Redis"],
+    "category": "fullstack",
+    "featured": true
+  },
+  {
+    "id": "responsive-client-portfolios",
+    "title": "Responsive UX Collection",
+    "company": "StartUp Hub",
+    "role": "Junior Developer",
+    "duration": "2016-07-01 - 2018-05-31",
+    "description": "Delivered high-performance responsive interfaces for diverse client projects.",
+    "challenges": ["Ensuring consistent behavior across fragmented mobile browsers."],
+    "solutions": ["Adopted a mobile-first CSS approach and semantic HTML5."],
+    "impact": ["Improved client satisfaction scores and mobile engagement metrics."],
+    "technologies": ["HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
+    "category": "frontend",
+    "featured": false
+  },
+  {
+    "id": "serverless-api-gateway",
+    "title": "Scalable Serverless Infrastructure",
+    "company": "StartUp Hub",
+    "role": "Junior Developer",
+    "duration": "2017-01-01 - 2018-05-31",
+    "description": "Architected serverless backends to handle bursty traffic patterns.",
+    "challenges": ["Cold start issues and managing complex serverless deployments."],
+    "solutions": ["Leveraged AWS Lambda and API Gateway with automated Vercel deployments."],
+    "impact": ["Achieved 99.9% uptime while reducing infrastructure costs by 30%."],
+    "technologies": ["Node.js", "AWS Lambda", "API Gateway", "Serverless"],
+    "category": "cloud",
+    "featured": false
+  }
+]
