@@ -1,8 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import PortfolioPage from './page';
+import PortfolioPage, { generateMetadata } from './page';
 
 import projectsData from '@/lib/data/portfolio/projects.json';
+
+describe('Portfolio generateMetadata', () => {
+  it('returns the Portfolio title and a description', () => {
+    const metadata = generateMetadata();
+    expect(metadata.title).toBe('Portfolio');
+    expect(metadata.description).toBeTruthy();
+  });
+});
 
 describe('PortfolioPage', () => {
   it('renders exactly one h1 with text Portfolio', () => {

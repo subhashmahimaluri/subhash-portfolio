@@ -1,6 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import ContactPage from './page';
+import ContactPage, { generateMetadata } from './page';
+
+describe('Contact generateMetadata', () => {
+  it('returns the Contact title and a description', () => {
+    const metadata = generateMetadata();
+    expect(metadata.title).toBe('Contact');
+    expect(metadata.description).toBeTruthy();
+  });
+});
 
 describe('ContactPage', () => {
   it('renders the main heading "Get in Touch"', () => {

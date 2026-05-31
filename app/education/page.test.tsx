@@ -15,6 +15,17 @@ async function renderEducationPage() {
   render(<EducationPage />);
 }
 
+describe('Education generateMetadata', () => {
+  it('returns the Education title and a description', async () => {
+    mockGetResumeData.mockReturnValue({ education: [], certifications: [] });
+    vi.resetModules();
+    const { generateMetadata } = await import('./page');
+    const metadata = generateMetadata();
+    expect(metadata.title).toBe('Education');
+    expect(metadata.description).toBeTruthy();
+  });
+});
+
 describe('EducationPage', () => {
   it('renders education and certification entries correctly', async () => {
     mockGetResumeData.mockReturnValue({

@@ -213,6 +213,57 @@ describe('ResumePage', () => {
     expect(pdfLink).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
+  // Renders every conditional section/branch from a fully-populated resume:
+  // website link, experience with nested projects (link, technologies, highlights),
+  // all skill groups, work authorization, education detail, certifications, languages,
+  // and an explicit references value (not the fallback).
+  it('renders all sections for a fully populated resume', async () => {
+    const { getResumeData } = vi.mocked(await import('@/lib/data/resume-loader'));
+    getResumeData.mockReturnValueOnce({
+      personalInfo: {
+        name: 'Full User', title: 'Architect', email: 'full@example.com', phone: '999',
+        location: 'Berlin', linkedin: 'linkedin.com/full', github: 'github.com/full',
+        calendly: 'cal.com/full', website: 'https://full.dev',
+      },
+      professionalSummary: 'Seasoned **architect**.',
+      experience: [
+        {
+          id: 'e1', company: 'ACME', role: 'Lead', location: 'Berlin',
+          startDate: '2019-01-01', endDate: 'present', highlights: ['Shipped **things**'],
+          projects: [
+            {
+              name: 'Platform', link: 'https://proj.dev', duration: '2y',
+              description: ['Built it'], technologies: ['Go', 'k8s'], highlights: ['Scaled it'],
+            },
+          ],
+        },
+      ],
+      skills: {
+        coreSkills: ['Leadership'], frontend: ['React'], backend: ['Node'], cloud: ['AWS'],
+        testing: ['Vitest'], ai: ['LLM'], architecture: ['DDD'], coreCompetencies: ['Agile'],
+      },
+      education: [{ degree: 'MSc', field: 'CS', institution: 'TU Berlin', year: '2015' }],
+      certifications: [{ name: 'CKA', issuer: 'CNCF', year: '2021' }],
+      languages: [{ language: 'German', proficiency: 'Native' }],
+      workAuthorization: 'EU Citizen',
+      references: 'Provided on file.',
+    } as unknown as ReturnType<typeof getResumeData>);
+
+    render(await ResumePage({ params: { country: 'germany' } }));
+
+    expect(screen.getByRole('link', { name: /Website of Full User/i })).toHaveAttribute('href', 'https://full.dev');
+    expect(screen.getByRole('heading', { level: 4, name: 'Projects:' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Platform' })).toHaveAttribute('href', 'https://proj.dev');
+    expect(screen.getByText(/Go, k8s/)).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Skills' })).toHaveTextContent('Leadership');
+    expect(screen.getByRole('heading', { level: 2, name: 'Work Authorization' })).toBeInTheDocument();
+    expect(screen.getByText('EU Citizen')).toBeInTheDocument();
+    expect(screen.getByText('MSc in CS')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Certifications' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Languages' })).toHaveTextContent('German (Native)');
+    expect(screen.getByText('Provided on file.')).toBeInTheDocument();
+  });
+
   // AC8: (b) `uk` does not render the Certifications heading;
   it('should not render Certifications section for UK', async () => {
     render(await ResumePage({ params: { country: 'uk' } }));
