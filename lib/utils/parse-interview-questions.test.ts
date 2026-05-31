@@ -51,7 +51,7 @@ Answer: Solution
 
   it('handles multi-line continuation with spaces', () => {
     const mockContent = `
-## Test
+## Test Coding
 1. You ask: Line 1
 Line 2
 Answer: Ans 1

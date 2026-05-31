@@ -21,8 +21,8 @@ export default function ContactPage() {
       <section>
         <h1 className="text-4xl font-bold mb-6 text-navy-600 dark:text-navy-100">Get in Touch</h1>
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-          I'm always open to discussing new projects, collaborations, or opportunities. 
-          Feel free to reach out via any of the channels below, and I'll get back to you as soon as possible.
+          I&apos;m always open to discussing new projects, collaborations, or opportunities.
+          Feel free to reach out via any of the channels below, and I&apos;ll get back to you as soon as possible.
         </p>
 
         <ul className="space-y-4">
