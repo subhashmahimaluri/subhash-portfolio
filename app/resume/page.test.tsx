@@ -6,7 +6,7 @@ import type { Country } from '@/types/resume';
 
 // Mock next/link to prevent actual navigation warnings in tests
 vi.mock('next/link', () => ({
-  default: ({ children, href, 'aria-label': ariaLabel }: any) => (
+  default: ({ children, href, 'aria-label': ariaLabel }: { children: React.ReactNode; href: string; 'aria-label'?: string }) => (
     <a href={href} aria-label={ariaLabel}>
       {children}
     </a>
