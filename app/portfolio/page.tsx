@@ -34,14 +34,14 @@ export default function PortfolioPage() {
         Each project highlights key challenges, solutions, and impact.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project) => (
+          <li key={project.id}>
           <article
-            key={project.id}
             tabIndex={0}
             className="flex flex-col p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-600 dark:focus-visible:ring-orange-500"
           >
-            <div className="flex justify-between items-start mb-2">
+            <header className="flex justify-between items-start mb-2">
               <span className="px-2 py-1 text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100 rounded">
                 {PROJECT_CATEGORIES[project.category]}
               </span>
@@ -50,8 +50,8 @@ export default function PortfolioPage() {
                   <span className="mr-1">★</span> Featured
                 </span>
               )}
-            </div>
-            
+            </header>
+
             <h2 className="text-xl font-bold mb-1 text-navy-600 dark:text-gray-100">
               {project.title}
             </h2>
@@ -68,19 +68,20 @@ export default function PortfolioPage() {
               {project.description}
             </p>
             
-            <div className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
-                <span 
-                  key={tech} 
+                <li
+                  key={tech}
                   className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded"
                 >
                   {tech}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </main>
   );
 }
