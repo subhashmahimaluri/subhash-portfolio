@@ -1,28 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-
-// The THEME_SCRIPT is copied here for testing purposes. In a real app, you might import it if it's exported.
-// For this test, we're replicating the script content as per AC8.
-const THEME_SCRIPT = `
-  (function() {
-    const themeKey = 'theme';
-    const storedTheme = localStorage.getItem(themeKey);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let initialTheme = 'light';
-
-    if (storedTheme) {
-      initialTheme = storedTheme;
-    } else if (prefersDark) {
-      initialTheme = 'dark';
-    }
-
-    document.documentElement.dataset.theme = initialTheme;
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  })();
-`;
+import { THEME_SCRIPT } from '@/lib/utils/theme-script';
 
 describe('THEME_SCRIPT behavior', () => {
   let mockMatchMedia: (query: string) => { matches: boolean };
@@ -45,19 +22,18 @@ describe('THEME_SCRIPT behavior', () => {
     docElement.classList.remove('light'); // Ensure no stray classes
 
     // Clear localStorage
-    localStorage.clear();
+    window.localStorage.clear();
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
-    localStorage.clear();
+    window.localStorage.clear();
   });
 
   const runScript = () => {
-    const script = document.createElement('script');
-    script.innerHTML = THEME_SCRIPT;
-    document.body.appendChild(script);
-    document.body.removeChild(script); // Clean up
+    // Use new Function to execute the script in the current test context
+    // where window and localStorage are mocked.
+    new Function(THEME_SCRIPT)();
   };
 
   it('should default to light theme if no preference and no stored theme', () => {

@@ -5,6 +5,7 @@ import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ThemeToggle } from '@/components/ThemeToggle'; // Import ThemeToggle
+import { THEME_SCRIPT } from '@/lib/utils/theme-script';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,28 +61,6 @@ export const metadata: Metadata = {
     },
   },
 };
-
-const THEME_SCRIPT = `
-  (function() {
-    const themeKey = 'theme';
-    const storedTheme = localStorage.getItem(themeKey);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let initialTheme = 'light';
-
-    if (storedTheme) {
-      initialTheme = storedTheme;
-    } else if (prefersDark) {
-      initialTheme = 'dark';
-    }
-
-    document.documentElement.dataset.theme = initialTheme;
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  })();
-`;
 
 export default function RootLayout({
   children,
