@@ -2,6 +2,8 @@
 
 Technical architecture for the **Subhash Mahimaluri resume website** — a Next.js 16 App Router application that renders a single source of resume data into five country-tailored web pages and on-demand PDFs, plus a React/JavaScript interview-questions reference.
 
+[Return to README.md](README.md)
+
 ---
 
 ## 1. Overview
