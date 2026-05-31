@@ -63,6 +63,7 @@ export interface Language {
 
 export interface BaseResumeData {
   personalInfo: PersonalInfo;
+  professionalSummary?: string;
   experience: Experience[];
   skills: Skills;
   education: Education[];
