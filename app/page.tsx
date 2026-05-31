@@ -1,27 +1,53 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import React from 'react'; // Explicitly import React for JSX transformation
+import { Hero } from '@/components/home/Hero';
+import { QuickAccess } from '@/components/home/QuickAccess';
+import { CoreExpertise } from '@/components/home/CoreExpertise';
+import { TrustedBy } from '@/components/home/TrustedBy';
+import React from 'react';
 
-export const metadata: Metadata = {
-  title: 'Home',
+export const generateMetadata = (): Metadata => {
+  const description =
+    'Personal portfolio and resume for Subhash Mahimaluri, showcasing expertise in cloud-native platforms, AI, and modern web development.';
+
+  return {
+    title: 'Home',
+    description: description,
+    openGraph: {
+      title: 'Subhash Mahimaluri - Home',
+      description: description,
+      type: 'website',
+      url: 'https://www.subhashmahimaluri.com/', // Replace with actual site URL
+    },
+  };
 };
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main role="main" className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <h1 className="text-4xl font-bold mb-4">Subhash Mahimaluri</h1>
-        <p className="text-lg text-gray-700 mb-8">
-          Principal Software Engineer specializing in cutting-edge web development and AI solutions.
-        </p>
-        <nav aria-label="Site navigation" className="flex gap-4">
-          <Link href="/resume" className="text-blue-600 hover:underline">Resume</Link>
-          <Link href="/portfolio" className="text-blue-600 hover:underline">Portfolio</Link>
-          <Link href="/education" className="text-blue-600 hover:underline">Education</Link>
-          <Link href="/react-interview-questions" className="text-blue-600 hover:underline">React Interview Q&A</Link>
-          <Link href="/contact" className="text-blue-600 hover:underline">Contact</Link>
-        </nav>
-      </div>
+    <main role="main" className="flex min-h-screen flex-col items-center justify-center pt-16 pb-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+      <section aria-label="Hero" className="w-full py-16">
+        <Hero />
+      </section>
+
+      <section aria-label="Quick access" className="w-full py-16 bg-white dark:bg-gray-900 shadow-inner">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100">Quick Access</h2>
+          <QuickAccess />
+        </div>
+      </section>
+
+      <section aria-label="Core expertise" className="w-full py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100">Core Expertise</h2>
+          <CoreExpertise />
+        </div>
+      </section>
+
+      <section aria-label="Trusted by" className="w-full py-16 bg-white dark:bg-gray-900 shadow-inner">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-gray-100">Trusted By</h2>
+          <TrustedBy />
+        </div>
+      </section>
     </main>
   );
 }
