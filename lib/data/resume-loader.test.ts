@@ -196,3 +196,4 @@ describe('resume-loader', () => {
       expect('workAuthorization' in euResume).toBe(false);
     });
   });
+});

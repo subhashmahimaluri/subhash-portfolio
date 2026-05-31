@@ -14,11 +14,11 @@ import euOverrideData from '@/lib/data/resume/eu.json';
 const AVAILABLE_COUNTRIES: Country[] = ['india', 'uae', 'germany', 'uk', 'eu'];
 
 const COUNTRY_OVERRIDES: Record<Country, CountryOverride> = {
-  india: indiaOverrideData,
-  uae: uaeOverrideData,
-  germany: germanyOverrideData,
-  uk: ukOverrideData,
-  eu: euOverrideData,
+  india: indiaOverrideData as unknown as CountryOverride,
+  uae: uaeOverrideData as unknown as CountryOverride,
+  germany: germanyOverrideData as unknown as CountryOverride,
+  uk: ukOverrideData as unknown as CountryOverride,
+  eu: euOverrideData as unknown as CountryOverride,
 };
 
 /**
@@ -51,7 +51,10 @@ export function getResumeData(country: Country): BaseResumeData {
   delete sanitizedOverride.truncateExperience; // Remove truncateExperience before merging
 
   // Perform deep merge
-  const mergedData = deepMerge(base, sanitizedOverride as Partial<BaseResumeData>);
+  const mergedData = deepMerge(
+    base as unknown as Record<string, unknown>,
+    sanitizedOverride as unknown as Record<string, unknown>
+  ) as unknown as BaseResumeData;
 
   // Apply experience truncation if specified and positive
   if (typeof truncateCount === 'number' && truncateCount > 0) {

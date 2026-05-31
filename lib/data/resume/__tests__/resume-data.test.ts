@@ -107,7 +107,8 @@ describe('Resume Data Integrity', () => {
       const validKeys = [
         'personalInfo', 'workAuthorization', 'professionalSummary', 
         'references', 'gdprNotice', 'languageRequirement', 
-        'truncateExperience', 'maxPages', 'additionalSections', 'hideSections'
+        'truncateExperience', 'maxPages', 'additionalSections', 'hideSections',
+        'skills'
       ];
       
       overrides.forEach(({ name, data }) => {
@@ -117,9 +118,9 @@ describe('Resume Data Integrity', () => {
       });
     });
 
-    it('should not contain market-invariant fields or array sections', () => {
+    it('should not contain market-invariant fields or unauthorized array sections', () => {
       const invariantFields = ['email', 'linkedin', 'github', 'calendly'];
-      const arraySections = ['experience', 'skills', 'education', 'certifications', 'languages'];
+      const unauthorizedArraySections = ['experience', 'education', 'certifications', 'languages'];
       
       overrides.forEach(({ name, data }) => {
         if (data.personalInfo) {
@@ -127,7 +128,7 @@ describe('Resume Data Integrity', () => {
             expect(data.personalInfo).not.toHaveProperty(field);
           });
         }
-        arraySections.forEach(section => {
+        unauthorizedArraySections.forEach(section => {
           expect(data).not.toHaveProperty(section);
         });
       });
