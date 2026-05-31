@@ -1,0 +1,93 @@
+{
+  "personalInfo": {
+    "name": "Subhash Mahimaluri",
+    "title": "Full Stack Engineer & AI Solutions Architect",
+    "email": "hello@subhash.dev",
+    "phone": "+91 98765 43210",
+    "location": "Hyderabad, India",
+    "linkedin": "https://linkedin.com/in/subhashm",
+    "github": "https://github.com/subhashm",
+    "calendly": "https://calendly.com/subhashm",
+    "website": "https://subhash.dev",
+    "summary": "Full Stack Engineer with 8+ years of experience building scalable web applications and AI-driven solutions. Expert in React, Next.js, and Node.js."
+  },
+  "experience": [
+    {
+      "id": "senior-engineer-at-tech-corp",
+      "company": "Tech Corp Solutions",
+      "role": "Senior Full Stack Engineer",
+      "location": "Remote",
+      "startDate": "2021-01-01",
+      "endDate": "present",
+      "highlights": [
+        "Led the migration of a legacy monolithic application to a modern **Next.js** microservices architecture, improving performance by 40%.",
+        "Architected and implemented a real-time data visualization dashboard using **Socket.io** and **D3.js**.",
+        "Mentored a team of 5 junior developers and established coding standards and CI/CD best practices."
+      ]
+    },
+    {
+      "id": "software-engineer-at-innovate-soft",
+      "company": "InnovateSoft",
+      "role": "Software Engineer",
+      "location": "Bangalore, India",
+      "startDate": "2018-06-01",
+      "endDate": "2020-12-31",
+      "highlights": [
+        "Developed and maintained core features of a high-traffic e-commerce platform using **React** and **Redux**.",
+        "Optimized database queries in **PostgreSQL**, reducing page load times by 25%.",
+        "Integrated third-party payment gateways including Stripe and Razorpay."
+      ]
+    },
+    {
+      "id": "junior-dev-at-start-up-hub",
+      "company": "StartUp Hub",
+      "role": "Junior Developer",
+      "location": "Hyderabad, India",
+      "startDate": "2016-07-01",
+      "endDate": "2018-05-31",
+      "highlights": [
+        "Built responsive user interfaces for various client projects using **HTML5**, **CSS3**, and **JavaScript**.",
+        "Assisted in the development of RESTful APIs using **Node.js** and **Express**.",
+        "Gained hands-on experience with **Git** version control and Agile methodologies."
+      ]
+    }
+  ],
+  "skills": {
+    "frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"],
+    "backend": ["Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"],
+    "cloud": ["AWS (EC2, S3, Lambda)", "Vercel", "Docker", "Kubernetes"],
+    "testing": ["Jest", "Vitest", "Playwright", "Cypress"],
+    "ai": ["OpenAI API", "LangChain", "Vector Databases", "Prompt Engineering"],
+    "architecture": ["Microservices", "Serverless", "Event-Driven Design", "REST/GraphQL"],
+    "coreCompetencies": ["Team Leadership", "Agile/Scrum", "Problem Solving", "System Design"]
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Technology",
+      "field": "Computer Science & Engineering",
+      "institution": "JNTU Hyderabad",
+      "year": "2016"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Solutions Architect – Associate",
+      "issuer": "Amazon Web Services",
+      "year": "2022"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Professional Working Proficiency"
+    },
+    {
+      "language": "Telugu",
+      "proficiency": "Native"
+    },
+    {
+      "language": "Hindi",
+      "proficiency": "Full Professional Proficiency"
+    }
+  ]
+}
