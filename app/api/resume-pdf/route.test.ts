@@ -1,10 +1,120 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { GET } from './route';
+import { generateResumeHTML } from '../../../lib/utils/resumePdfGenerator';
+import { BaseResumeData } from '../../../types/resume';
+
+vi.mock('puppeteer', () => ({
+  default: {
+    launch: vi.fn().mockResolvedValue({
+      newPage: vi.fn().mockResolvedValue({
+        setContent: vi.fn().mockResolvedValue(undefined),
+        pdf: vi.fn().mockResolvedValue(Buffer.from('mock-pdf-content')),
+      }),
+      close: vi.fn().mockResolvedValue(undefined),
+    }),
+  },
+}));
+
+vi.mock('../../../lib/data/resumeLoader', () => ({
+  getResumeData: vi.fn((country) => ({
+    personalInfo: {
+      name: 'Subhash Mahimaluri',
+      title: 'Software Engineer',
+      email: 'test@example.com',
+      phone: '+1234567890',
+      location: 'Earth',
+      linkedin: '',
+      github: '',
+      calendly: '',
+      summary: ''
+    },
+    experience: [],
+    skills: { frontend: [], backend: [], cloud: [], testing: [], ai: [], architecture: [], coreCompetencies: [] },
+    education: [],
+    certifications: [{ name: 'AWS Certified' }],
+    languages: [],
+    availability: 'Available immediately',
+    workAuthorization: 'Authorized to work'
+  }))
+}));
 
 describe('GET /api/resume-pdf', () => {
-  it('returns a "Not implemented" JSON response (PDF endpoint ships in PBI-016)', async () => {
-    const res = await GET();
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('returns 400 for invalid country parameter without launching Puppeteer', async () => {
+    const req = new Request('http://localhost/api/resume-pdf?country=france');
+    const res = await GET(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data).toEqual({ error: 'Invalid country parameter' });
+  });
+
+  it('returns application/pdf with default uae country', async () => {
+    const req = new Request('http://localhost/api/resume-pdf');
+    const res = await GET(req);
     expect(res.status).toBe(200);
-    await expect(res.json()).resolves.toEqual({ message: 'Not implemented' });
+    expect(res.headers.get('Content-Type')).toBe('application/pdf');
+    expect(res.headers.get('Content-Disposition')).toContain('filename="Subhash_Mahimaluri_Resume_uae.pdf"');
+  });
+
+  it('returns 500 if Puppeteer fails', async () => {
+    const puppeteer = await import('puppeteer');
+    vi.mocked(puppeteer.default.launch).mockRejectedValueOnce(new Error('Browser crash'));
+    
+    const req = new Request('http://localhost/api/resume-pdf?country=uk');
+    const res = await GET(req);
+    expect(res.status).toBe(500);
+    const data = await res.json();
+    expect(data).toEqual({ error: 'PDF generation failed' });
+  });
+});
+
+describe('generateResumeHTML', () => {
+  const mockData: BaseResumeData = {
+    personalInfo: {
+      name: 'Subhash Mahimaluri',
+      title: 'Dev',
+      email: 'a@b.com',
+      phone: '123',
+      location: 'UK',
+      linkedin: '',
+      github: '',
+      calendly: '',
+      summary: ''
+    },
+    experience: [],
+    skills: { frontend: [], backend: [], cloud: [], testing: [], ai: [], architecture: [], coreCompetencies: [] },
+    education: [],
+    certifications: [{ name: 'AWS Certified' }],
+    languages: [],
+    availability: 'Available immediately',
+    workAuthorization: 'Authorized to work'
+  };
+
+  it('starts with <!DOCTYPE html and includes personal name', () => {
+    const html = generateResumeHTML(mockData, 'uae');
+    expect(html.startsWith('<!DOCTYPE html>')).toBe(true);
+    expect(html).toContain('Subhash Mahimaluri');
+  });
+
+  it('escapes <script> tags', () => {
+    const maliciousData = { ...mockData, personalInfo: { ...mockData.personalInfo, name: '<script>alert(1)</script>' } };
+    const html = generateResumeHTML(maliciousData, 'uae');
+    expect(html).not.toContain('<script>');
+    expect(html).toContain('&lt;script&gt;alert(1)&lt;/script&gt;');
+  });
+
+  it('renders **bold** as <strong>bold</strong>', () => {
+    const boldData = { ...mockData, professionalSummary: 'I am **very** good.' };
+    const html = generateResumeHTML(boldData, 'uae');
+    expect(html).toContain('I am <strong>very</strong> good.');
+  });
+
+  it('omits Certifications when country is uk', () => {
+    const html = generateResumeHTML(mockData, 'uk');
+    expect(html).not.toContain('AWS Certified');
+    expect(html).not.toContain('<h2>Certifications</h2>');
   });
 });
