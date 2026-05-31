@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { ThemeToggle } from '@/components/ThemeToggle'; // Import ThemeToggle
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,16 +61,40 @@ export const metadata: Metadata = {
   },
 };
 
+const THEME_SCRIPT = `
+  (function() {
+    const themeKey = 'theme';
+    const storedTheme = localStorage.getItem(themeKey);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let initialTheme = 'light';
+
+    if (storedTheme) {
+      initialTheme = storedTheme;
+    } else if (prefersDark) {
+      initialTheme = 'dark';
+    }
+
+    document.documentElement.dataset.theme = initialTheme;
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  })();
+`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} data-theme="light">
       <body className={`${inter.className} antialiased`}>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} suppressHydrationWarning />
         <Navbar />
         <main>{children}</main>
+        <ThemeToggle /> {/* Place ThemeToggle here to be on all pages */}
         <Footer />
       </body>
     </html>
