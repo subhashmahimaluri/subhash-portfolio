@@ -21,7 +21,7 @@ export const generateMetadata = (): Metadata => {
   };
 };
 
-export default function HomePage() {
+export default function Home() {
   return (
     <main role="main" className="flex min-h-screen flex-col items-center justify-center pt-16 pb-24 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       <section aria-label="Hero" className="w-full py-16">

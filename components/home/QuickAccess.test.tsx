@@ -29,7 +29,7 @@ describe('QuickAccess', () => {
     render(<QuickAccess />);
     const links = screen.getAllByRole('link');
     links.forEach(link => {
-      expect(link).toHaveAccessibleName(expect.not.stringEmpty());
+      expect(link).toHaveAccessibleName();
     });
   });
 });
