@@ -37,21 +37,25 @@ describe('InterviewClientPage', () => {
     expect(screen.getByRole('button', { name: /all/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /general/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /coding/i })).toBeInTheDocument();
-    
-    expect(screen.getByText('General')).toBeInTheDocument();
-    expect(screen.getByText('Coding')).toBeInTheDocument();
+
+    // Category titles render as <h2> sections ('General'/'Coding' also appear as
+    // filter buttons, so scope these to the heading role).
+    expect(screen.getByRole('heading', { level: 2, name: 'General' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Coding' })).toBeInTheDocument();
   });
 
   it('filters questions based on category selection', () => {
     render(<InterviewClientPage categories={mockCategories} />);
     
     fireEvent.click(screen.getByRole('button', { name: /general/i }));
-    
-    expect(screen.getByText('General')).toBeInTheDocument();
-    expect(screen.queryByText('Coding')).not.toBeInTheDocument();
-    
+
+    // Filtering to General shows only its section heading; the Coding section heading
+    // is gone (its filter button persists, hence the heading-scoped query).
+    expect(screen.getByRole('heading', { level: 2, name: 'General' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { level: 2, name: 'Coding' })).not.toBeInTheDocument();
+
     fireEvent.click(screen.getByRole('button', { name: /all/i }));
-    expect(screen.getByText('Coding')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Coding' })).toBeInTheDocument();
   });
 
   it('toggles question expansion', () => {

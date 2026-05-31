@@ -1,5 +1,6 @@
-'use server';
-
+// Server-only module: the node:fs / node:path imports below make it impossible to
+// bundle into a Client Component, so fs/path never leak to the client. (A 'use server'
+// directive is wrong here — that marks the file as Server Actions, which must be async.)
 import fs from 'node:fs';
 import path from 'node:path';
 
