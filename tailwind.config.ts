@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
+        navy: {
           50: '#e0f2f7',
           100: '#b3e1ed',
           200: '#80cadd',
@@ -22,7 +22,7 @@ const config: Config = {
           900: '#001a33',
           950: '#001326',
         },
-        accent: {
+        orange: {
           50: '#fff7ed',
           100: '#ffeccc',
           200: '#ffc999',
