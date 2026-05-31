@@ -95,3 +95,11 @@ export interface CountryOverride extends Partial<BaseResumeData> {
   [key: string]: unknown;
 }
 
+export const COUNTRIES: Record<Country, string> = {
+  india: 'India',
+  uae: 'UAE / Middle East',
+  germany: 'Germany',
+  uk: 'United Kingdom',
+  eu: 'European Union',
+};
+

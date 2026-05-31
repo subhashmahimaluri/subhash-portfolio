@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import ResumeMarketPage, { metadata } from './page';
 import * as ResumeLoader from '@/lib/data/resume-loader';
+import type { Country } from '@/types/resume';
 
 // Mock next/link to prevent actual navigation warnings in tests
 vi.mock('next/link', () => ({
@@ -13,7 +14,7 @@ vi.mock('next/link', () => ({
 }));
 
 describe('ResumeMarketPage', () => {
-  const mockCountries = ['india', 'uae', 'germany', 'uk', 'eu'];
+  const mockCountries: Country[] = ['india', 'uae', 'germany', 'uk', 'eu'];
   const mockCountryLabels = {
     india: 'India',
     uae: 'UAE / Middle East',
