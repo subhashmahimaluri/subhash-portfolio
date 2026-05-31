@@ -1,15 +1,23 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import EducationPage from './page';
-import { getResumeData } from '@/lib/data/resume-loader';
 
+// The page reads getResumeData('india') at module scope (AC3), so the value must
+// be set BEFORE the page module is imported. A vi.hoisted mock is stable across
+// vi.resetModules(), letting each test re-import the page with fresh data.
+const { mockGetResumeData } = vi.hoisted(() => ({ mockGetResumeData: vi.fn() }));
 vi.mock('@/lib/data/resume-loader', () => ({
-  getResumeData: vi.fn(),
+  getResumeData: mockGetResumeData,
 }));
 
+async function renderEducationPage() {
+  vi.resetModules();
+  const { default: EducationPage } = await import('./page');
+  render(<EducationPage />);
+}
+
 describe('EducationPage', () => {
-  it('renders education and certification entries correctly', () => {
-    (getResumeData as any).mockReturnValue({
+  it('renders education and certification entries correctly', async () => {
+    mockGetResumeData.mockReturnValue({
       education: [
         { degree: 'Bachelor of Science', field: 'Computer Science', institution: 'University A', year: '2020' },
         { degree: 'High School', year: '2016' }
@@ -20,7 +28,7 @@ describe('EducationPage', () => {
       ]
     });
 
-    render(<EducationPage />);
+    await renderEducationPage();
 
     // AC8(a)
     expect(screen.getByText('Bachelor of Science in Computer Science')).toBeInTheDocument();
@@ -36,13 +44,13 @@ describe('EducationPage', () => {
     expect(screen.getAllByText('2021')).toHaveLength(1);
   });
 
-  it('renders fallback paragraphs when arrays are empty', () => {
-    (getResumeData as any).mockReturnValue({
+  it('renders fallback paragraphs when arrays are empty', async () => {
+    mockGetResumeData.mockReturnValue({
       education: [],
       certifications: []
     });
 
-    render(<EducationPage />);
+    await renderEducationPage();
 
     // AC8(c)
     expect(screen.getByText('No education entries available.')).toBeInTheDocument();
@@ -50,13 +58,13 @@ describe('EducationPage', () => {
     expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
 
-  it('contains required headings and landmarks', () => {
-    (getResumeData as any).mockReturnValue({
+  it('contains required headings and landmarks', async () => {
+    mockGetResumeData.mockReturnValue({
       education: [],
       certifications: []
     });
 
-    render(<EducationPage />);
+    await renderEducationPage();
 
     // AC8(d)
     expect(screen.getByRole('heading', { level: 1, name: 'Education & Certifications' })).toBeInTheDocument();
