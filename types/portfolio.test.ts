@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { PortfolioProject, PROJECT_CATEGORIES } from '../types/portfolio';
+import { PortfolioProject, PROJECT_CATEGORIES } from './portfolio';
 
 test('PortfolioProject interface structure', () => {
   const testPortfolioProject: PortfolioProject = {

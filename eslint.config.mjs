@@ -1,14 +1,10 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import next from 'eslint-config-next';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-export default [
-  ...compat.extends('next/core-web-vitals'),
+const eslintConfig = [
+  ...next,
+  {
+    ignores: ['.next/**', 'node_modules/**', 'coverage/**', 'playwright-report/**'],
+  },
 ];
+
+export default eslintConfig;

@@ -11,7 +11,7 @@ import {
   CountryOverrides,
   Country,
   COUNTRIES,
-} from '../src/types/resume';
+} from './resume';
 
 test('PersonalInfo interface structure', () => {
   const testPersonalInfo: PersonalInfo = {
