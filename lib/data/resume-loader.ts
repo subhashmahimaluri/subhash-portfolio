@@ -13,6 +13,14 @@ import euOverrideData from '@/lib/data/resume/eu.json';
 
 const AVAILABLE_COUNTRIES: Country[] = ['india', 'uae', 'germany', 'uk', 'eu'];
 
+export const COUNTRIES: Record<Country, string> = {
+  india: 'India',
+  uae: 'UAE / Middle East',
+  germany: 'Germany',
+  uk: 'United Kingdom',
+  eu: 'European Union',
+};
+
 const COUNTRY_OVERRIDES: Record<Country, CountryOverride> = {
   india: indiaOverrideData as unknown as CountryOverride,
   uae: uaeOverrideData as unknown as CountryOverride,

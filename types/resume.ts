@@ -96,9 +96,10 @@ export interface CountryOverride extends Partial<BaseResumeData> {
 }
 
 export const COUNTRIES: Record<Country, string> = {
-  'india': 'India',
-  'uae': 'UAE / Dubai',
-  'germany': 'Germany',
-  'uk': 'United Kingdom',
-  'eu': 'European Union',
+  india: 'India',
+  uae: 'UAE / Middle East',
+  germany: 'Germany',
+  uk: 'United Kingdom',
+  eu: 'European Union',
 };
+
