@@ -16,7 +16,7 @@ export const Footer = () => {
             href="https://linkedin.com/in/subhashmahimaluri"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none"
             aria-label="LinkedIn profile"
           >
             LinkedIn
@@ -25,7 +25,7 @@ export const Footer = () => {
             href="https://github.com/subhashmahimaluri"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none"
             aria-label="GitHub profile"
           >
             GitHub
@@ -34,7 +34,7 @@ export const Footer = () => {
             href="mailto:subhash.yexaa@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none"
             aria-label="Email Subhash Mahimaluri"
           >
             Email
@@ -43,7 +43,7 @@ export const Footer = () => {
             href={CAL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+            className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none"
             aria-label="Schedule a call"
           >
             Schedule a Call

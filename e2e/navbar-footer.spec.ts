@@ -22,10 +22,10 @@ test.describe('Navbar and Footer', () => {
   test('footer is visible on the home page', async ({ page }) => {
     await expect(page.locator('footer')).toBeVisible();
     await expect(page.getByText(/© \d{4} Subhash Mahimaluri\. All rights reserved\./)).toBeVisible();
-    await expect(page.getByLabelText('LinkedIn profile')).toBeVisible();
-    await expect(page.getByLabelText('GitHub profile')).toBeVisible();
-    await expect(page.getByLabelText('Email Subhash Mahimaluri')).toBeVisible();
-    await expect(page.getByLabelText('Schedule a call')).toBeVisible();
+    await expect(page.getByLabel('LinkedIn profile')).toBeVisible();
+    await expect(page.getByLabel('GitHub profile')).toBeVisible();
+    await expect(page.getByLabel('Email Subhash Mahimaluri')).toBeVisible();
+    await expect(page.getByLabel('Schedule a call')).toBeVisible();
   });
 
   test('at 375px × 812px viewport the hamburger button is visible and clicking it reveals the nav link list', async ({ page }) => {
@@ -34,7 +34,7 @@ test.describe('Navbar and Footer', () => {
     const desktopNav = page.getByRole('navigation', { name: 'Main navigation' });
     await expect(desktopNav).not.toBeVisible(); // Desktop nav should be hidden
 
-    const toggleButton = page.getByLabelText('Toggle navigation');
+    const toggleButton = page.getByLabel('Toggle navigation');
     await expect(toggleButton).toBeVisible();
     await expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
 

@@ -21,7 +21,7 @@ export const Navbar = () => {
   return (
     <header role="banner" className="bg-white py-4 px-4 shadow-md no-print">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-navy-700 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none">
+        <Link href="/" className="text-xl font-bold text-navy-700 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none">
           subhashai.cloud
         </Link>
 
@@ -32,7 +32,7 @@ export const Navbar = () => {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+                  className="text-navy-700 hover:text-navy-900 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none"
                 >
                   {link.label}
                 </Link>
@@ -43,7 +43,7 @@ export const Navbar = () => {
                 href={CAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-4 px-4 py-2 bg-orange-500 text-navy-900 rounded-md hover:bg-orange-600 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
+                className="ml-4 px-4 py-2 bg-orange-500 text-navy-900 rounded-md hover:bg-orange-600 focus-visible:ring-2 focus-visible:ring-orange-600 focus-visible:outline-none"
               >
                 Schedule a Call
               </a>
