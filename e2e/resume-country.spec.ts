@@ -11,10 +11,10 @@ test.describe('Resume Country Page', () => {
     // AC9: `<h1>` visible
     const h1 = page.getByRole('heading', { level: 1 });
     await expect(h1).toBeVisible();
-    await expect(h1).toHaveText('Ahmed Doe'); // Assuming fixture data has Ahmed Doe for UAE
+    await expect(h1).toHaveText('Subhash Mahimaluri'); // base name (UAE override does not change it)
 
     // AC9: Download PDF link `href` contains `country=uae`
-    const downloadPdfLink = page.getByRole('link', { name: 'Download PDF' });
+    const downloadPdfLink = page.getByRole('link', { name: /Download PDF/i });
     await expect(downloadPdfLink).toBeVisible();
     await expect(downloadPdfLink).toHaveAttribute('href', '/api/resume-pdf?country=uae');
     await expect(downloadPdfLink).toHaveAttribute('download', '');

@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import { notFound } from 'next/navigation';
@@ -91,8 +92,11 @@ vi.mock('@/lib/data/resume-loader', () => ({
   getAvailableCountries: vi.fn(() => ['india', 'uae', 'germany', 'uk', 'eu']),
 }));
 
+// notFound() throws in real Next.js, halting render before any data load.
 vi.mock('next/navigation', () => ({
-  notFound: vi.fn(),
+  notFound: vi.fn(() => {
+    throw new Error('NEXT_NOT_FOUND');
+  }),
 }));
 
 // Import the component and helper for testing
@@ -161,7 +165,7 @@ describe('generateMetadata', () => {
     const metadata = await generateMetadata({ params: { country: 'india' } });
     expect(metadata.title).toBe('Resume — India');
     expect(metadata.description).toBe('A highly skilled Software Engineer with 5 years of experience.');
-    expect(metadata.openGraph?.type).toBe('profile');
+    expect((metadata.openGraph as { type?: string })?.type).toBe('profile');
     expect(metadata.openGraph?.url).toBe('https://subhashmahimaluri.com/resume/india');
   });
 
@@ -186,14 +190,23 @@ describe('ResumePage', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: 'John Doe' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Professional Summary' })).toBeInTheDocument();
-    expect(screen.getByText(/A highly skilled Software Engineer with 5 years of experience./i)).toBeInTheDocument();
-    expect(screen.getByText('Software Engineer')).toBeInTheDocument(); // Checks strong tag content
+    // parseMarkdownBold splits the summary across multiple nodes (a <strong> in the
+    // middle), so assert on the section's concatenated textContent rather than a single node.
+    expect(screen.getByRole('region', { name: 'Professional Summary' })).toHaveTextContent(
+      'A highly skilled Software Engineer with 5 years of experience.'
+    );
+    // parseMarkdownBold produced a <strong> inside the summary ('Software Engineer' also
+    // appears as the header title, so scope the check to the summary region).
+    expect(
+      screen.getByRole('region', { name: 'Professional Summary' }).querySelector('strong')
+    ).toHaveTextContent('Software Engineer');
     expect(screen.getByRole('heading', { level: 2, name: 'Experience' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: 'Dev at Tech Corp' })).toBeInTheDocument();
-    expect(screen.getByText(/Developed key features/i)).toBeInTheDocument(); // Checks strong tag content
+    // Highlight 'Developed **key features**' is split across nodes by parseMarkdownBold.
+    expect(screen.getByRole('region', { name: 'Experience' })).toHaveTextContent('Developed key features');
     expect(screen.getByRole('heading', { level: 2, name: 'Skills' })).toBeInTheDocument();
 
-    const pdfLink = screen.getByRole('link', { name: 'Download PDF' });
+    const pdfLink = screen.getByRole('link', { name: /Download PDF/i });
     expect(pdfLink).toBeInTheDocument();
     expect(pdfLink).toHaveAttribute('href', '/api/resume-pdf?country=india');
     expect(pdfLink).toHaveAttribute('download', '');
@@ -223,10 +236,11 @@ describe('ResumePage', () => {
     const { getResumeData } = vi.mocked(await import('@/lib/data/resume-loader'));
     const { notFound } = vi.mocked(await import('next/navigation'));
 
-    await ResumePage({ params: { country: 'unknown' } });
+    // notFound() throws, so rendering the invalid country rejects before getResumeData runs.
+    await expect(ResumePage({ params: { country: 'unknown' } })).rejects.toThrow('NEXT_NOT_FOUND');
 
     expect(notFound).toHaveBeenCalledTimes(1);
-    expect(getResumeData).not.toHaveBeenCalledWith('unknown' as any); // getResumeData should not be called
+    expect(getResumeData).not.toHaveBeenCalledWith('unknown'); // getResumeData should not be called
   });
 
   it('should render "Available on request" for references if not provided', async () => {

@@ -23,7 +23,7 @@ interface ResumePageProps {
 }
 
 // AC1: Module-level parseMarkdownBold helper
-function parseMarkdownBold(text: string): React.ReactNode {
+export function parseMarkdownBold(text: string): React.ReactNode {
   const parts = text.split(/(\*\*.*?\*\*)/g);
   return parts.map((part, index) => {
     if (part.startsWith('**') && part.endsWith('**')) {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
   const countrySlug = params.country;
 
   // Validate country before fetching data for metadata
-  if (!Object.keys(COUNTRIES).includes(countrySlug as Country)) {
+  if (!Object.keys(COUNTRIES).includes(countrySlug)) {
     // If country is not valid, metadata should not be generated for it.
     // However, Next.js expects a Metadata object. For invalid paths,
     // generateStaticParams prevents pre-rendering, and notFound() will handle runtime.
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
   const country = countrySlug as Country;
   const resumeData = getResumeData(country);
   const countryLabel = COUNTRIES[country];
-  const description = resumeData.professionalSummary?.substring(0, 160) || `Resume for ${resumeData.personalInfo.name}`;
+  const description = resumeData.professionalSummary?.replace(/\*\*/g, '').substring(0, 160) || `Resume for ${resumeData.personalInfo.name}`;
 
   return {
     title: `Resume — ${countryLabel}`,
@@ -83,7 +83,7 @@ export default async function ResumePage({ params }: ResumePageProps) {
   const countrySlug = params.country;
 
   // AC3: Validate country slug against allowlist and call notFound()
-  if (!Object.keys(COUNTRIES).includes(countrySlug as Country)) {
+  if (!Object.keys(COUNTRIES).includes(countrySlug)) {
     notFound();
   }
 
