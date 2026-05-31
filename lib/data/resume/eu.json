@@ -1,0 +1,10 @@
+{
+  "personalInfo": {
+    "phone": "+33 1 23 45 67 89",
+    "location": "Paris, France",
+    "summary": "Experienced Full Stack Developer specialized in building scalable European-wide platforms with a focus on accessibility and data sovereignty."
+  },
+  "gdprNotice": "By submitting this application, I agree to the processing of my personal data according to European Union data protection regulations.",
+  "truncateExperience": 3,
+  "maxPages": 2
+}

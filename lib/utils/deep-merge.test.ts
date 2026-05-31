@@ -21,7 +21,7 @@ describe('deepMerge', () => {
   it('should not recurse into arrays or null, treating them as primitives for replacement', () => {
     const targetWithArray = { data: [1, 2], config: { key: 'value' }, n: null };
     const sourceWithArray = { data: [3, 4], config: 'new_value', n: {a:1} };
-    const result = deepMerge(targetWithArray, sourceWithArray);
+    const result = deepMerge(targetWithArray as any, sourceWithArray as any);
     expect(result).toEqual({ data: [3, 4], config: 'new_value', n: {a:1} });
     expect(Object.prototype.toString.call(result.config)).not.toBe('[object Object]');
     expect(result.data).toEqual([3,4]);
@@ -54,7 +54,7 @@ describe('deepMerge', () => {
   it('should replace target values with null from source', () => {
     const target = { value: 10, other: 'test' };
     const source = { value: null, other: undefined };
-    const result = deepMerge(target, source);
+    const result = deepMerge(target as any, source as any);
     expect(result).toEqual({ value: null, other: 'test' });
   });
 
@@ -126,7 +126,7 @@ describe('deepMerge', () => {
   it('should correctly add a new top-level key', () => {
     const target = { a: 1 };
     const source = { b: 2 };
-    const result = deepMerge(target, source);
+    const result = deepMerge(target as any, source as any);
     expect(result).toEqual({ a: 1, b: 2 });
   });
 
@@ -148,7 +148,7 @@ describe('deepMerge', () => {
       permissions: ['admin'],
       status: 'active',
     };
-    const result = deepMerge(target, source);
+    const result = deepMerge(target as any, source as any);
     expect(result).toEqual({
       user: {
         id: 1,

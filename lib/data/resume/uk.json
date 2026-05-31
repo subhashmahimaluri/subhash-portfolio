@@ -1,0 +1,10 @@
+{
+  "personalInfo": {
+    "phone": "+44 7700 900000",
+    "location": "London, UK",
+    "summary": "Senior Full Stack Engineer based in London, expert in React and Node.js with experience in UK-based financial technology and e-commerce sectors."
+  },
+  "truncateExperience": 3,
+  "maxPages": 2,
+  "workAuthorization": "British Citizen / Right to Work in UK"
+}

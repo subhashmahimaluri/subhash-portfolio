@@ -1,0 +1,11 @@
+{
+  "personalInfo": {
+    "phone": "+49 151 12345678",
+    "location": "Berlin, Germany",
+    "summary": "Full Stack Engineer with a strong focus on quality, performance, and data privacy. Experienced in working with German tech startups and scale-ups."
+  },
+  "gdprNotice": "I hereby consent to the processing of my personal data for recruitment purposes in accordance with the GDPR.",
+  "truncateExperience": 3,
+  "maxPages": 2,
+  "languageRequirement": "German: B1 (Intermediate)"
+}
