@@ -12,6 +12,18 @@ export default defineConfig({
     exclude: ['node_modules', '.next', 'playwright'],
     coverage: {
       provider: 'v8',
+      all: true,
+      include: [
+        'app/**/*.{ts,tsx}',
+        'components/**/*.{ts,tsx}',
+        'lib/**/*.{ts,tsx}',
+        'types/**/*.{ts,tsx}',
+      ],
+      exclude: [
+        '**/*.test.{ts,tsx}',
+        '**/*.spec.{ts,tsx}',
+        '**/__tests__/**',
+      ],
       thresholds: {
         lines: 90,
         functions: 90,
