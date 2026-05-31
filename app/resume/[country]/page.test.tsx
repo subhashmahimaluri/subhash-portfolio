@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 
 // Mock resume-loader and next/navigation
 vi.mock('@/lib/data/resume-loader', () => ({
-  getResumeData: vi.fn((country: string) => {
+  getResumeData: vi.fn((country: string): unknown => {
     switch (country) {
       case 'india':
         return {
