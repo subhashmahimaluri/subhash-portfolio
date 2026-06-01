@@ -15,7 +15,7 @@ vi.mock('puppeteer', () => ({
   },
 }));
 
-vi.mock('../../../lib/data/resumeLoader', () => ({
+vi.mock('../../../lib/data/resume-loader', () => ({
   getResumeData: vi.fn((country) => ({
     personalInfo: {
       name: 'Subhash Mahimaluri',
@@ -49,6 +49,9 @@ describe('GET /api/resume-pdf', () => {
     expect(res.status).toBe(400);
     const data = await res.json();
     expect(data).toEqual({ error: 'Invalid country parameter' });
+    // AC9(f): validation rejects before any Puppeteer launch.
+    const puppeteer = await import('puppeteer');
+    expect(vi.mocked(puppeteer.default.launch)).not.toHaveBeenCalled();
   });
 
   it('returns application/pdf with default uae country', async () => {
@@ -116,5 +119,26 @@ describe('generateResumeHTML', () => {
     const html = generateResumeHTML(mockData, 'uk');
     expect(html).not.toContain('AWS Certified');
     expect(html).not.toContain('<h2>Certifications</h2>');
+  });
+
+  it('renders experience highlights and education entries (with/without institution)', () => {
+    const populated: BaseResumeData = {
+      ...mockData,
+      experience: [
+        {
+          id: 'e1', company: 'ACME', role: 'Lead', location: 'Berlin',
+          startDate: '2019', endDate: 'present', highlights: ['Did **things**'],
+        },
+      ],
+      education: [
+        { degree: 'MSc', field: 'CS', institution: 'TU Berlin', year: '2015' },
+        { degree: 'BSc', field: 'Math' }, // no institution → exercises the ternary's false branch
+      ],
+    };
+    const html = generateResumeHTML(populated, 'uae');
+    expect(html).toContain('Lead at ACME');
+    expect(html).toContain('<li>Did <strong>things</strong></li>');
+    expect(html).toContain('MSc in CS - TU Berlin');
+    expect(html).toContain('BSc in Math');
   });
 });

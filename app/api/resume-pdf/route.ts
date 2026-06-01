@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer';
-import { getResumeData } from '../../../lib/data/resumeLoader';
+import { getResumeData } from '../../../lib/data/resume-loader';
 import { generateResumeHTML } from '../../../lib/utils/resumePdfGenerator';
 import { Country } from '../../../types/resume';
 
@@ -46,7 +46,9 @@ export async function GET(request: Request): Promise<Response> {
         margin: { top: '15mm', right: '15mm', bottom: '15mm', left: '15mm' }
       });
 
-      return new Response(pdfBuffer, {
+      // Wrap in a fresh ArrayBuffer-backed Uint8Array so it satisfies BodyInit
+      // (puppeteer's page.pdf() returns Uint8Array<ArrayBufferLike>).
+      return new Response(new Uint8Array(pdfBuffer), {
         status: 200,
         headers: {
           'Content-Type': 'application/pdf',
