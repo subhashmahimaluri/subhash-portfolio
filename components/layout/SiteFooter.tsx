@@ -1,13 +1,14 @@
 interface SocialLink {
   label: string;
   href: string;
+  external?: boolean;
 }
 
 const SOCIAL_LINKS: ReadonlyArray<SocialLink> = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/subhash-mahimaluri' },
-  { label: 'GitHub', href: 'https://github.com/subhashmahimaluri' },
-  { label: 'Email', href: 'mailto:subhashmahimaluri@gmail.com' },
-  { label: 'Schedule a Call', href: 'https://cal.com/subhashmt' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/subhash-mahimaluri', external: true },
+  { label: 'GitHub', href: 'https://github.com/subhashmahimaluri', external: true },
+  { label: 'Email', href: 'mailto:subhashmahimaluri@gmail.com', external: true },
+  { label: 'Schedule a Call', href: 'https://cal.com/subhashmt', external: true },
 ];
 
 /**
@@ -17,24 +18,23 @@ const SOCIAL_LINKS: ReadonlyArray<SocialLink> = [
 export const SiteFooter = () => {
   return (
     <footer className="site-footer no-print">
-      <p className="text-[var(--text-soft)]">
-        subhashai.cloud · © 2026 Subhash Mahimaluri
-      </p>
+      <div className="container">
+        <div className="footer-inner">
+          <p className="footer-brand">
+            <strong>subhashai.cloud</strong> · © 2026 Subhash Mahimaluri
+          </p>
 
-      <ul className="flex flex-wrap items-center gap-x-[var(--s-6)] gap-y-[var(--s-2)]">
-        {SOCIAL_LINKS.map((link) => (
-          <li key={link.href}>
-            <a
-              className="rounded-[var(--r-sm)] text-[var(--text-soft)] transition-colors hover:text-[var(--text-faint)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+          <ul className="footer-links">
+            {SOCIAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </footer>
   );
 };

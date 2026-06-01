@@ -6,8 +6,12 @@ import { SiteFooter } from '../SiteFooter';
 
 describe('SiteFooter', () => {
   it('renders the brand text', () => {
-    render(<SiteFooter />);
-    expect(screen.getByText(/subhashai\.cloud · © 2026 Subhash Mahimaluri/i)).toBeInTheDocument();
+    const { container } = render(<SiteFooter />);
+    // The brand wordmark is bolded via <strong>, so the text spans two nodes —
+    // assert against the paragraph's combined textContent.
+    const brand = container.querySelector('.footer-brand');
+    expect(brand).not.toBeNull();
+    expect(brand?.textContent).toBe('subhashai.cloud · © 2026 Subhash Mahimaluri');
   });
 
   it('renders 4 social links with correct hrefs and attributes', () => {

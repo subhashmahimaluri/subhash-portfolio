@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAvailableCountries, COUNTRIES } from '@/lib/data/resume-loader';
 
@@ -11,32 +11,41 @@ export default function ResumeMarketPage() {
   const countries = getAvailableCountries();
 
   return (
-    <main role="main" className="container mx-auto px-4 py-16 max-w-5xl">
-      <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-6">
-        Choose Your Resume Market
-      </h1>
-      <p className="text-xl text-center text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-        Select a country or region below to view my tailored resume for that market.
-      </p>
+    <section className="page" aria-labelledby="resume-title">
+      <div className="container">
+        <header className="page-head">
+          <span className="eyebrow">Resume</span>
+          <h1 id="resume-title">Choose Your Resume Market</h1>
+          <p className="lead">
+            Select a country or region below to view my tailored resume for that market.
+          </p>
+        </header>
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {countries.map((country) => (
-          <li key={country}>
-            <Link
-              href={`/resume/${country}`}
-              aria-label={`View ${COUNTRIES[country]} resume`}
-              className="group relative flex flex-col items-center justify-center h-full p-6
-                         border border-blue-800 bg-white dark:bg-gray-800 rounded-lg shadow-sm
-                         hover:shadow-md transition-shadow duration-200
-                         focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:outline-none"
-            >
-              <span className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        <ul className="data-grid" style={{ listStyle: 'none', padding: 0 }}>
+          {countries.map((country) => (
+            <li key={country}>
+              <Link
+                href={`/resume/${country}`}
+                aria-label={`View ${COUNTRIES[country]} resume`}
+                className="data-card"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  minHeight: 120,
+                  fontFamily: 'var(--font-sora), sans-serif',
+                  fontWeight: 700,
+                  fontSize: 20,
+                  color: 'var(--text)',
+                }}
+              >
                 {COUNTRIES[country]}
-              </span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }

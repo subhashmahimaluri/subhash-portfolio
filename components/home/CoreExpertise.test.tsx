@@ -2,33 +2,31 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { CoreExpertise } from './CoreExpertise';
 
+const EXPECTED = [
+  'React',
+  'Next.js',
+  'React Native',
+  'TypeScript',
+  'Node.js',
+  'Micro Frontends',
+  'Agentic AI',
+  'AI / LLM Systems',
+  'RAG · Vector DBs',
+  'Cloud Architecture',
+  'Azure DevOps',
+  'AWS',
+];
+
 describe('CoreExpertise', () => {
-  it('asserts all 12 expertise labels appear', () => {
+  it('renders all 12 expertise labels', () => {
     render(<CoreExpertise />);
-
-    const expectedExpertiseLabels = [
-      'Solution Architecture',
-      'Cloud-Native Platforms',
-      'AI & LLM Integrations',
-      'Microservices & APIs',
-      'Event-Driven Systems',
-      'Azure & AWS',
-      'DevOps & CI/CD',
-      'Data Engineering',
-      'React & Next.js',
-      'TypeScript',
-      'Enterprise Integration',
-      'Agile Delivery',
-    ];
-
-    expectedExpertiseLabels.forEach((label) => {
+    EXPECTED.forEach((label) => {
       expect(screen.getByText(label)).toBeInTheDocument();
     });
   });
 
-  it('renders the correct number of expertise chips', () => {
-    render(<CoreExpertise />);
-    const chips = screen.getAllByText(/Solution Architecture|Cloud-Native Platforms|AI & LLM Integrations|Microservices & APIs|Event-Driven Systems|Azure & AWS|DevOps & CI\/CD|Data Engineering|React & Next.js|TypeScript|Enterprise Integration|Agile Delivery/);
-    expect(chips).toHaveLength(12);
+  it('renders exactly 12 chips', () => {
+    const { container } = render(<CoreExpertise />);
+    expect(container.querySelectorAll('.chip-cloud li')).toHaveLength(12);
   });
 });
