@@ -1,16 +1,24 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Sora } from 'next/font/google';
 import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { ThemeToggle } from '@/components/ThemeToggle'; // Import ThemeToggle
-import { THEME_SCRIPT } from '@/lib/utils/theme-script';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
+import { ThemeScript } from '@/components/theme/ThemeScript';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800', '900'],
+});
+
+const sora = Sora({
+  subsets: ['latin'],
+  variable: '--font-sora',
+  display: 'swap',
+  weight: ['600', '700', '800'],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3005';
@@ -18,7 +26,7 @@ const siteName = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Subhash Mahimaluri - Prin
 const titleDefault = 'Subhash Mahimaluri - Principal Software Engineer';
 const titleTemplate = '%s | Subhash Mahimaluri';
 const description = 'Principal Software Engineer with 15+ years of experience across React, Next.js, TypeScript, Node.js, AI/LLM, and cloud technologies. Explore my work and expertise.';
-const ogImage = '/og-image.jpg'; // Path to a default Open Graph image
+const ogImage = '/og-image.jpg';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -68,12 +76,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} data-theme="light">
+    <html lang="en" className={`${inter.variable} ${sora.variable}`} data-theme="dark">
+      <head>
+        <ThemeScript />
+      </head>
       <body className={`${inter.className} antialiased`}>
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} suppressHydrationWarning />
         <Navbar />
         <main>{children}</main>
-        <ThemeToggle /> {/* Place ThemeToggle here to be on all pages */}
+        <ThemeToggle />
         <Footer />
       </body>
     </html>
