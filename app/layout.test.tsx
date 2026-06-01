@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 // next/font/google is a build-time macro; stub it so the module imports under Vitest.
 vi.mock('next/font/google', () => ({
   Inter: () => ({ variable: '--font-inter', className: 'inter' }),
+  Sora: () => ({ variable: '--font-sora', className: 'sora' }),
 }));
 
 import RootLayout, { metadata } from './layout';

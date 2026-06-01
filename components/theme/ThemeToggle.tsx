@@ -8,6 +8,7 @@ export const ThemeToggle: React.FC = () => {
   const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const storedTheme = localStorage.getItem('theme') as Theme | null;
     let initialTheme: Theme = 'dark';
