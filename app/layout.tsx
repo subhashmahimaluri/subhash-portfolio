@@ -2,9 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Sora } from 'next/font/google';
 import React from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+import { SiteFooter } from '@/components/layout/SiteFooter';
 import { ThemeScript } from '@/components/theme/ThemeScript';
 
 const inter = Inter({
@@ -81,10 +80,10 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <ThemeToggle />
-        <Footer />
+        <a className="skip-link" href="#main">Skip to main content</a>
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );
