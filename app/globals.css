@@ -67,6 +67,95 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sora), system-ui, sans-serif;
   }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Keyboard skip link — visually hidden until focused, then slides into view. */
+  .skip-link {
+    position: absolute;
+    left: var(--s-4);
+    top: var(--s-2);
+    z-index: 100;
+    padding: var(--s-2) var(--s-4);
+    border-radius: var(--r-md);
+    background: var(--accent);
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform 0.2s var(--ease, ease);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  /* Sticky glass header with a hairline bottom border (V2 mock .site-header). */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--glass-header);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: var(--s-6) var(--s-4);
+    border-top: 1px solid var(--border);
+  }
+
+  .brand {
+    font-family: var(--font-sora), system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text-faint);
+    text-decoration: none;
+  }
+
+  .brand span {
+    color: var(--accent);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    border-radius: var(--r-md);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-sm {
+    padding: var(--s-2) var(--s-4);
+    font-size: 0.875rem;
+  }
+
+  .btn-navy {
+    background: var(--navy-soft);
+    color: var(--text-faint);
+    border: 1px solid var(--border);
+  }
+
+  .btn-navy:hover {
+    background: var(--navy);
+  }
 }
 
 @layer utilities {
