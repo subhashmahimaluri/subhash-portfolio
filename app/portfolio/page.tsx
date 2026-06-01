@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import projectsData from '@/lib/data/portfolio/projects.json';
 import { PortfolioProject, PROJECT_CATEGORIES } from '@/types/portfolio';
 
@@ -7,7 +7,8 @@ const projects = projectsData as PortfolioProject[];
 export const generateMetadata = (): Metadata => {
   return {
     title: 'Portfolio',
-    description: 'Explore a curated collection of software development projects, showcasing expertise in frontend, fullstack, AI/ML, enterprise, and cloud solutions.',
+    description:
+      'Explore a curated collection of software development projects, showcasing expertise in frontend, fullstack, AI/ML, enterprise, and cloud solutions.',
     openGraph: {
       title: 'Portfolio | Subhash Mahimaluri',
       description: 'Explore a curated collection of software development projects.',
@@ -19,69 +20,81 @@ export const generateMetadata = (): Metadata => {
 export default function PortfolioPage() {
   if (projects.length === 0) {
     return (
-      <main className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8 text-navy-600 dark:text-orange-100">Portfolio</h1>
-        <p>No projects to display.</p>
-      </main>
+      <section className="page" aria-labelledby="portfolio-title">
+        <div className="container">
+          <header className="page-head">
+            <h1 id="portfolio-title">Portfolio</h1>
+          </header>
+          <p style={{ textAlign: 'center', color: 'var(--text-soft)' }}>
+            No projects to display.
+          </p>
+        </div>
+      </section>
     );
   }
 
   return (
-    <main className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-4 text-navy-600 dark:text-orange-100">Portfolio</h1>
-      <p className="text-lg mb-12 text-gray-700 dark:text-gray-300 max-w-3xl">
-        Welcome to my portfolio, a curated selection of projects demonstrating my expertise in various domains. 
-        Each project highlights key challenges, solutions, and impact.
-      </p>
+    <section className="page" aria-labelledby="portfolio-title">
+      <div className="container">
+        <header className="page-head">
+          <span className="eyebrow">Selected Work</span>
+          <h1 id="portfolio-title">Portfolio</h1>
+          <p className="lead">
+            A curated selection of projects across platforms, AI, and cloud systems — each
+            highlighting the challenge, the solution, and the impact.
+          </p>
+        </header>
 
-      <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <li key={project.id}>
-          <article
-            tabIndex={0}
-            className="flex flex-col p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-600 dark:focus-visible:ring-orange-500"
-          >
-            <header className="flex justify-between items-start mb-2">
-              <span className="px-2 py-1 text-xs font-bold uppercase tracking-wider bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-100 rounded">
-                {PROJECT_CATEGORIES[project.category]}
-              </span>
-              {project.featured && (
-                <span className="text-xs font-semibold text-navy-600 dark:text-orange-400 flex items-center">
-                  <span className="mr-1">★</span> Featured
-                </span>
-              )}
-            </header>
-
-            <h2 className="text-xl font-bold mb-1 text-navy-600 dark:text-gray-100">
-              {project.title}
-            </h2>
-            
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              {project.company} &middot; {project.role}
-            </p>
-            
-            <p className="text-xs text-gray-500 dark:text-gray-500 mb-4">
-              {project.duration}
-            </p>
-            
-            <p className="text-gray-700 dark:text-gray-300 mb-6 flex-grow">
-              {project.description}
-            </p>
-            
-            <ul className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <li
-                  key={tech}
-                  className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded"
+        <ul role="list" className="data-grid" style={{ listStyle: 'none', padding: 0 }}>
+          {projects.map((project) => (
+            <li key={project.id}>
+              <article
+                tabIndex={0}
+                className="data-card"
+                style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+              >
+                <header
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    gap: 'var(--s-3)',
+                    marginBottom: 'var(--s-3)',
+                  }}
                 >
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </article>
-          </li>
-        ))}
-      </ul>
-    </main>
+                  <span className="section-title" style={{ margin: 0 }}>
+                    {PROJECT_CATEGORIES[project.category]}
+                  </span>
+                  {project.featured && (
+                    <span className="featured-marker" style={{ color: 'var(--accent-on)' }}>
+                      <span aria-hidden="true">★</span> Featured
+                    </span>
+                  )}
+                </header>
+
+                <h2 style={{ fontSize: 20 }}>{project.title}</h2>
+                <p style={{ color: 'var(--link-strong)', fontWeight: 600, marginTop: 'var(--s-1)' }}>
+                  {project.company} &middot; {project.role}
+                </p>
+                <p className="when" style={{ marginTop: 'var(--s-1)' }}>
+                  {project.duration}
+                </p>
+                <p style={{ color: 'var(--text-soft)', margin: 'var(--s-4) 0', flexGrow: 1 }}>
+                  {project.description}
+                </p>
+
+                <ul className="tag-row">
+                  {project.technologies.map((tech) => (
+                    <li key={tech} className="tag">
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }

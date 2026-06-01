@@ -3,32 +3,31 @@ import { render, screen } from '@testing-library/react';
 import { QuickAccess } from './QuickAccess';
 
 describe('QuickAccess', () => {
-  it('renders at least five Link cards with correct hrefs and accessible names', () => {
+  it('renders the six quick-access cards with correct hrefs and accessible names', () => {
     render(<QuickAccess />);
 
     const links = screen.getAllByRole('link');
-    expect(links.length).toBeGreaterThanOrEqual(5);
+    expect(links).toHaveLength(6);
 
     const expectedLinks = [
       { href: '/resume', label: 'Resume' },
       { href: '/portfolio', label: 'Portfolio' },
       { href: '/education', label: 'Education' },
-      { href: '/react-interview-questions', label: 'Interview Prep' },
+      { href: '/react-interview-questions', label: 'React Interview Q&A' },
       { href: '/contact', label: 'Contact' },
+      { href: '/portfolio', label: 'Featured Work' },
     ];
 
     expectedLinks.forEach((expected) => {
       const linkElement = screen.getByRole('link', { name: expected.label });
       expect(linkElement).toBeInTheDocument();
       expect(linkElement).toHaveAttribute('href', expected.href);
-      expect(linkElement).toHaveAccessibleName(expected.label);
     });
   });
 
-  it('each card has a non-empty accessible name', () => {
+  it('each card link has a non-empty accessible name', () => {
     render(<QuickAccess />);
-    const links = screen.getAllByRole('link');
-    links.forEach(link => {
+    screen.getAllByRole('link').forEach((link) => {
       expect(link).toHaveAccessibleName();
     });
   });

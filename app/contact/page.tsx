@@ -1,81 +1,131 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+const EMAIL = 'subhashmahimaluri@gmail.com';
+const CAL_URL = 'https://cal.com/subhashmt';
 
 export const generateMetadata = (): Metadata => {
-  const description = 'Connect with Subhash Mahimaluri through various channels: email, social media, or schedule a call.';
+  const description =
+    'Get in touch with Subhash Mahimaluri for collaboration, consulting, or full-time opportunities — email, phone, LinkedIn, GitHub, or schedule a call.';
   return {
     title: 'Contact',
     description,
     openGraph: {
-      title: 'Contact',
+      title: 'Contact — Subhash Mahimaluri',
       description,
       type: 'website',
     },
   };
 };
 
+interface Channel {
+  label: string;
+  value: string;
+  href: string;
+  external?: boolean;
+  accessibleName: string;
+}
+
+const CHANNELS: ReadonlyArray<Channel> = [
+  {
+    label: 'Email',
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
+    accessibleName: 'Send an email to Subhash Mahimaluri',
+  },
+  {
+    label: 'Phone (UAE)',
+    value: '+971 52 912 8793',
+    href: 'tel:+971529128793',
+    accessibleName: 'Call Subhash Mahimaluri in the UAE',
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/subhash-mahimaluri',
+    href: 'https://www.linkedin.com/in/subhash-mahimaluri',
+    external: true,
+    accessibleName: 'LinkedIn profile',
+  },
+  {
+    label: 'GitHub',
+    value: 'github.com/subhashmahimaluri',
+    href: 'https://github.com/subhashmahimaluri',
+    external: true,
+    accessibleName: 'GitHub profile',
+  },
+];
+
 export default function ContactPage() {
-  const calUrl = process.env.NEXT_PUBLIC_CAL_URL ?? 'https://cal.com/subhash-mahimaluri';
-
   return (
-    <main className="container mx-auto px-4 py-16 max-w-3xl">
-      <section>
-        <h1 className="text-4xl font-bold mb-6 text-navy-600 dark:text-navy-100">Get in Touch</h1>
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
-          I&apos;m always open to discussing new projects, collaborations, or opportunities.
-          Feel free to reach out via any of the channels below, and I&apos;ll get back to you as soon as possible.
-        </p>
+    <section className="page" aria-labelledby="contact-title">
+      <div className="container">
+        <header className="page-head">
+          <span className="eyebrow">Get in Touch</span>
+          <h1 id="contact-title">Contact</h1>
+          <p className="lead">
+            Let&apos;s connect and discuss opportunities for collaboration, consulting, or
+            full-time roles.
+          </p>
+        </header>
 
-        <ul className="space-y-4">
-          <li>
+        <div className="data-grid">
+          {CHANNELS.map((channel) => (
             <a
-              href="mailto:subhash.yexaa@gmail.com"
-              aria-label="Send an email to Subhash Mahimaluri"
-              className="text-navy-600 dark:text-navy-300 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors motion-safe:duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
+              key={channel.label}
+              className="data-card"
+              href={channel.href}
+              aria-label={channel.accessibleName}
+              {...(channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
-              Email Subhash Mahimaluri
+              <p className="section-title">{channel.label}</p>
+              <p style={{ color: 'var(--link-strong)', fontWeight: 600, wordBreak: 'break-word' }}>
+                {channel.value}
+              </p>
             </a>
-          </li>
-          <li>
-            <a
-              href="https://linkedin.com/in/subhashmahimaluri"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View Subhash Mahimaluri on LinkedIn"
-              className="text-navy-600 dark:text-navy-300 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors motion-safe:duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
-            >
-              LinkedIn Profile
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/subhashmahimaluri"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View Subhash Mahimaluri on GitHub"
-              className="text-navy-600 dark:text-navy-300 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors motion-safe:duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
-            >
-              GitHub Profile
-            </a>
-          </li>
-          <li>
-            <a
-              href={calUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Schedule a Call with Subhash Mahimaluri"
-              className="text-navy-600 dark:text-navy-300 hover:text-orange-500 dark:hover:text-orange-400 font-medium transition-colors motion-safe:duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded"
-            >
-              Schedule a Call
-            </a>
-          </li>
-          <li className="text-gray-700 dark:text-gray-300">
-            <span className="font-semibold">Location:</span> Melbourne, Australia
-          </li>
-          <li className="text-gray-700 dark:text-gray-300">
-            <span className="font-semibold">Availability:</span> I usually respond within 24 hours.
-          </li>
-        </ul>
-      </section>
-    </main>
+          ))}
+        </div>
+
+        <div className="panel" style={{ marginTop: 'var(--s-8)' }}>
+          <h2>Location &amp; Availability</h2>
+          <div className="prose" style={{ marginTop: 'var(--s-4)' }}>
+            <p>
+              <strong>Current location:</strong> Dubai, UAE
+            </p>
+            <p>
+              <strong>Work authorization:</strong> UAE 2-year residence visa
+            </p>
+            <p>
+              <strong>Availability:</strong> Immediately available for full-time, contract, or
+              consulting opportunities — typically responding within 24 hours.
+            </p>
+            <p>
+              <strong>Markets:</strong> Open to opportunities in India, UAE, Germany, UK, EU, and
+              remote positions globally.
+            </p>
+          </div>
+        </div>
+
+        <div className="hero-ctas" style={{ marginTop: 'var(--s-10)', justifyContent: 'center' }}>
+          <a
+            className="btn btn-primary"
+            href={CAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Schedule a call"
+          >
+            Schedule a Call
+          </a>
+          <a className="btn btn-outline" href={`mailto:${EMAIL}`} aria-label="Send Subhash an email">
+            Send Email
+          </a>
+        </div>
+
+        <p style={{ marginTop: 'var(--s-10)', textAlign: 'center' }}>
+          <Link href="/" style={{ color: 'var(--link-strong)', fontWeight: 600 }}>
+            ← Back to Home
+          </Link>
+        </p>
+      </div>
+    </section>
   );
 }

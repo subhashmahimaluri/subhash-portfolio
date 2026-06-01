@@ -11,15 +11,15 @@ describe('Contact generateMetadata', () => {
 });
 
 describe('ContactPage', () => {
-  it('renders the main heading "Get in Touch"', () => {
+  it('renders the main heading "Contact"', () => {
     render(<ContactPage />);
-    expect(screen.getByRole('heading', { name: /get in touch/i, level: 1 })).toBeDefined();
+    expect(screen.getByRole('heading', { name: /^contact$/i, level: 1 })).toBeDefined();
   });
 
-  it('renders the mailto link correctly', () => {
+  it('renders the email channel with the correct mailto', () => {
     render(<ContactPage />);
     const emailLink = screen.getByRole('link', { name: /send an email to subhash mahimaluri/i });
-    expect(emailLink.getAttribute('href')).toBe('mailto:subhash.yexaa@gmail.com');
+    expect(emailLink.getAttribute('href')).toBe('mailto:subhashmahimaluri@gmail.com');
   });
 
   it('renders external links with noopener noreferrer', () => {
@@ -28,12 +28,12 @@ describe('ContactPage', () => {
     const github = screen.getByRole('link', { name: /github/i });
     const cal = screen.getByRole('link', { name: /schedule a call/i });
 
-    [linkedin, github, cal].forEach(link => {
+    [linkedin, github, cal].forEach((link) => {
       expect(link.getAttribute('target')).toBe('_blank');
       expect(link.getAttribute('rel')).toContain('noopener');
       expect(link.getAttribute('rel')).toContain('noreferrer');
     });
-    
+
     expect(linkedin.getAttribute('href')).toContain('linkedin.com');
     expect(github.getAttribute('href')).toContain('github.com');
     expect(cal.getAttribute('href')).toContain('cal.com');
@@ -41,7 +41,7 @@ describe('ContactPage', () => {
 
   it('renders location and availability text', () => {
     render(<ContactPage />);
-    expect(screen.getByText(/melbourne, australia/i)).toBeDefined();
+    expect(screen.getByText(/dubai, uae/i)).toBeDefined();
     expect(screen.getByText(/within 24 hours/i)).toBeDefined();
   });
 });
