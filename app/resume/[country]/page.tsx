@@ -15,9 +15,9 @@ import {
 } from '@/types/resume';
 
 interface ResumePageProps {
-  params: {
+  params: Promise<{
     country: string;
-  };
+  }>;
 }
 
 // Module-level helper: turns **bold** markdown into <strong> nodes.
@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ResumePageProps): Promise<Metadata> {
-  const countrySlug = params.country;
+  const { country: countrySlug } = await params;
 
   if (!Object.keys(COUNTRIES).includes(countrySlug)) {
     return {
@@ -72,7 +72,7 @@ const sectionHeadingClass = 'section-title';
 const contactLinkStyle: React.CSSProperties = { color: 'var(--link-strong)', fontWeight: 600 };
 
 export default async function ResumePage({ params }: ResumePageProps) {
-  const countrySlug = params.country;
+  const { country: countrySlug } = await params;
 
   if (!Object.keys(COUNTRIES).includes(countrySlug)) {
     notFound();

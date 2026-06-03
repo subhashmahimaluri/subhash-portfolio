@@ -23,7 +23,7 @@ describe('SiteHeader', () => {
     expect(brand).toHaveClass('brand');
   });
 
-  it('renders all 6 nav links with correct hrefs', () => {
+  it('renders all 5 nav links with correct hrefs', () => {
     render(<SiteHeader />);
     
     const links = [
@@ -31,7 +31,6 @@ describe('SiteHeader', () => {
       { name: /portfolio/i, href: '/portfolio' },
       { name: /resume/i, href: '/resume' },
       { name: /education/i, href: '/education' },
-      { name: /react q&a/i, href: '/react-interview-questions' },
       { name: /contact/i, href: '/contact' },
     ];
 

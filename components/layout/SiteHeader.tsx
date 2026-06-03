@@ -12,7 +12,6 @@ const NAV_LINKS: ReadonlyArray<NavItem> = [
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Resume', href: '/resume' },
   { label: 'Education', href: '/education' },
-  { label: 'React Q&A', href: '/react-interview-questions' },
   { label: 'Contact', href: '/contact' },
 ];
 

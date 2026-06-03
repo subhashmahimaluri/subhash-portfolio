@@ -41,7 +41,7 @@ describe('ContactPage', () => {
 
   it('renders location and availability text', () => {
     render(<ContactPage />);
-    expect(screen.getByText(/dubai, uae/i)).toBeDefined();
-    expect(screen.getByText(/within 24 hours/i)).toBeDefined();
+    expect(screen.getByText(/hyderabad, india/i)).toBeDefined();
+    expect(screen.getByText(/30-day notice period/i)).toBeDefined();
   });
 });
