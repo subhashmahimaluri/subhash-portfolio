@@ -35,8 +35,8 @@ const CHANNELS: ReadonlyArray<Channel> = [
   },
   {
     label: 'Phone',
-    value: '+91 98765 43210',
-    href: 'tel:+919876543210',
+    value: '+91 9980551764',
+    href: 'tel:+919980551764',
     accessibleName: 'Call Subhash Mahimaluri',
   },
   {
@@ -86,23 +86,18 @@ export default function ContactPage() {
         </div>
 
         <div className="panel" style={{ marginTop: 'var(--s-8)' }}>
-          <h2>Location &amp; Availability</h2>
+          <h2>Location</h2>
           <div className="prose" style={{ marginTop: 'var(--s-4)' }}>
             <p>
-              <strong>Current location:</strong> Hyderabad, India
+              <strong>Current location:</strong> Bengaluru, India
             </p>
             <p>
               <strong>Work authorization:</strong> Indian citizen — open to relocation and visa
               sponsorship (UAE, UK, EU).
             </p>
             <p>
-              <strong>Availability:</strong> Open to new full-time, contract, or consulting
-              opportunities, available with a standard 30-day notice period — typically responding
-              within 24 hours.
-            </p>
-            <p>
               <strong>Markets:</strong> Open to opportunities in India, UAE, Germany, UK, EU, and
-              remote positions globally.
+              remote positions globally — typically responding within 24 hours.
             </p>
           </div>
         </div>

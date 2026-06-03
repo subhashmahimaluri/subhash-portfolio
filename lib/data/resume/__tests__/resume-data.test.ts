@@ -96,7 +96,7 @@ describe('Resume Data Integrity', () => {
   });
 
   describe('Country Overrides', () => {
-    const overrides = [
+    const overrides: Array<{ name: string; data: Record<string, unknown> }> = [
       { name: 'india', data: india },
       { name: 'uae', data: uae },
       { name: 'germany', data: germany },

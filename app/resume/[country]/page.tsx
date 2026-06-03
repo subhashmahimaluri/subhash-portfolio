@@ -31,6 +31,19 @@ export function parseMarkdownBold(text: string): React.ReactNode {
   });
 }
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function formatDate(value: string): string {
+  if (!value || value.toLowerCase() === 'present') return 'Present';
+  const match = /^(\d{4})-(\d{2})/.exec(value);
+  if (!match) return value;
+  return `${MONTHS[parseInt(match[2], 10) - 1]} ${match[1]}`;
+}
+
+function formatPeriod(start: string, end: string): string {
+  return `${formatDate(start)} – ${formatDate(end)}`;
+}
+
 export async function generateStaticParams() {
   const countries = getAvailableCountries();
   return countries.map((country) => ({ country }));
@@ -49,9 +62,9 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
   const country = countrySlug as Country;
   const resumeData = getResumeData(country);
   const countryLabel = COUNTRIES[country];
+  const summary = resumeData.professionalSummary ?? resumeData.personalInfo.summary;
   const description =
-    resumeData.professionalSummary?.replace(/\*\*/g, '').substring(0, 160) ||
-    `Resume for ${resumeData.personalInfo.name}`;
+    summary?.replace(/\*\*/g, '').substring(0, 160) || `Resume for ${resumeData.personalInfo.name}`;
 
   return {
     title: `Resume — ${countryLabel}`,
@@ -68,8 +81,10 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
   };
 }
 
-const sectionHeadingClass = 'section-title';
-const contactLinkStyle: React.CSSProperties = { color: 'var(--link-strong)', fontWeight: 600 };
+interface SkillGroup {
+  label: string;
+  items?: string[];
+}
 
 export default async function ResumePage({ params }: ResumePageProps) {
   const { country: countrySlug } = await params;
@@ -91,283 +106,242 @@ export default async function ResumePage({ params }: ResumePageProps) {
   const showAvailability = country === 'uae' && !!data.availability;
   const referencesText = data.references || 'Available on request';
 
+  const skillGroups: SkillGroup[] = [
+    { label: 'Frontend', items: skills.frontend },
+    { label: 'Backend & APIs', items: skills.backend },
+    { label: 'Cloud & DevOps', items: skills.cloud },
+    { label: 'Testing & Quality', items: skills.testing },
+    { label: 'AI & Automation', items: skills.ai },
+    { label: 'Architecture & Design', items: skills.architecture },
+    { label: 'Core Competencies', items: skills.coreCompetencies },
+  ];
+
   return (
     <section className="page" aria-labelledby="resume-name">
-      <div className="container" style={{ maxWidth: 880 }}>
-        {/* Header */}
-        <header
-          className="panel"
-          style={{ textAlign: 'center', marginBottom: 'var(--s-6)' }}
-        >
-          <h1 id="resume-name" style={{ fontSize: 'clamp(30px, 5vw, 44px)' }}>
-            {personalInfo.name}
-          </h1>
-          <p className="role" style={{ marginTop: 'var(--s-2)' }}>
-            {personalInfo.title}
-          </p>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: 'var(--s-4)',
-              marginTop: 'var(--s-4)',
-              color: 'var(--text-soft)',
-            }}
-          >
-            <a
-              href={`mailto:${personalInfo.email}`}
-              rel="noopener noreferrer"
-              style={contactLinkStyle}
-              aria-label={`Email ${personalInfo.name} at ${personalInfo.email}`}
-            >
-              {personalInfo.email}
-            </a>
-            <span>{personalInfo.phone}</span>
-            <span>{personalInfo.location}</span>
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={contactLinkStyle}
-              aria-label={`LinkedIn profile of ${personalInfo.name}`}
-            >
-              LinkedIn
-            </a>
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={contactLinkStyle}
-              aria-label={`GitHub profile of ${personalInfo.name}`}
-            >
-              GitHub
-            </a>
-            {personalInfo.website && (
-              <a
-                href={personalInfo.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={contactLinkStyle}
-                aria-label={`Website of ${personalInfo.name}`}
-              >
-                Website
-              </a>
+      <div className="container">
+        <div className="resume">
+          <article className="resume-doc">
+            {/* Header */}
+            <header className="resume-header">
+              <h1 id="resume-name">{personalInfo.name}</h1>
+              <p className="resume-role">{personalInfo.title}</p>
+              <div className="resume-contact">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  rel="noopener noreferrer"
+                  aria-label={`Email ${personalInfo.name} at ${personalInfo.email}`}
+                >
+                  {personalInfo.email}
+                </a>
+                <span className="sep" aria-hidden="true">
+                  |
+                </span>
+                <span>{personalInfo.phone}</span>
+                <span className="sep" aria-hidden="true">
+                  |
+                </span>
+                <span>{personalInfo.location}</span>
+                {personalInfo.website && (
+                  <>
+                    <span className="sep" aria-hidden="true">
+                      |
+                    </span>
+                    <a
+                      href={personalInfo.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Website of ${personalInfo.name}`}
+                    >
+                      {personalInfo.website.replace(/^https?:\/\//, '')}
+                    </a>
+                  </>
+                )}
+                <span className="sep" aria-hidden="true">
+                  |
+                </span>
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`LinkedIn profile of ${personalInfo.name}`}
+                >
+                  LinkedIn
+                </a>
+                <span className="sep" aria-hidden="true">
+                  |
+                </span>
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`GitHub profile of ${personalInfo.name}`}
+                >
+                  GitHub
+                </a>
+              </div>
+            </header>
+
+            {/* Professional Summary */}
+            {professionalSummary && (
+              <section aria-labelledby="professional-summary-heading" className="resume-section">
+                <h2 id="professional-summary-heading">Professional Summary</h2>
+                <p className="resume-summary">{parseMarkdownBold(professionalSummary)}</p>
+              </section>
             )}
-          </div>
-        </header>
 
-        {/* Professional Summary */}
-        {professionalSummary && (
-          <section aria-labelledby="professional-summary-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-            <h2 id="professional-summary-heading" className={sectionHeadingClass}>
-              Professional Summary
-            </h2>
-            <p className="prose">{parseMarkdownBold(professionalSummary)}</p>
-          </section>
-        )}
+            {/* Experience */}
+            <section aria-labelledby="experience-heading" className="resume-section">
+              <h2 id="experience-heading">Professional Experience</h2>
+              {experience.map((exp: Experience) => (
+                <div key={exp.id} className="resume-entry">
+                  <div className="resume-entry-head">
+                    <h3>
+                      {exp.role} at {exp.company}
+                    </h3>
+                    <span className="resume-meta">
+                      {exp.location} | {formatPeriod(exp.startDate, exp.endDate)}
+                    </span>
+                  </div>
+                  <ul className="resume-list">
+                    {exp.highlights.map((highlight, index) => (
+                      <li key={index}>{parseMarkdownBold(highlight)}</li>
+                    ))}
+                  </ul>
+                  {exp.projects && exp.projects.length > 0 && (
+                    <>
+                      <h4 style={{ marginTop: 'var(--s-4)', fontSize: 14, color: 'var(--text-faint)' }}>
+                        Projects:
+                      </h4>
+                      {exp.projects.map((project: Project, index: number) => (
+                        <div key={index} className="resume-project">
+                          <p className="resume-project-title">
+                            {project.link ? (
+                              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                {project.name}
+                              </a>
+                            ) : (
+                              project.name
+                            )}{' '}
+                            ({project.duration})
+                          </p>
+                          <ul className="resume-list">
+                            {project.description.map((desc, idx) => (
+                              <li key={idx}>{parseMarkdownBold(desc)}</li>
+                            ))}
+                            {project.highlights?.map((highlight, idx) => (
+                              <li key={`h-${idx}`}>{parseMarkdownBold(highlight)}</li>
+                            ))}
+                          </ul>
+                          {project.technologies && project.technologies.length > 0 && (
+                            <p className="resume-tech">
+                              <strong>Technologies:</strong> {project.technologies.join(', ')}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </>
+                  )}
+                </div>
+              ))}
+            </section>
 
-        {/* Experience */}
-        <section aria-labelledby="experience-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-          <h2 id="experience-heading" className={sectionHeadingClass}>
-            Experience
-          </h2>
-          {experience.map((exp: Experience) => (
-            <div key={exp.id} style={{ marginBottom: 'var(--s-6)' }}>
-              <h3>
-                {exp.role} at {exp.company}
-              </h3>
-              <p className="when" style={{ marginTop: 'var(--s-1)' }}>
-                {exp.location} | {exp.startDate} - {exp.endDate}
-              </p>
-              <ul className="prose" style={{ paddingLeft: 'var(--s-5)', marginTop: 'var(--s-3)' }}>
-                {exp.highlights.map((highlight, index) => (
-                  <li key={index}>{parseMarkdownBold(highlight)}</li>
-                ))}
-              </ul>
-              {exp.projects && exp.projects.length > 0 && (
-                <div style={{ marginTop: 'var(--s-4)' }}>
-                  <h4 style={{ fontSize: 16, marginBottom: 'var(--s-2)' }}>Projects:</h4>
-                  {exp.projects.map((project: Project, index: number) => (
-                    <div key={index} style={{ marginBottom: 'var(--s-4)' }}>
-                      <p style={{ fontWeight: 600, color: 'var(--text)' }}>
-                        {project.link ? (
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={contactLinkStyle}
-                          >
-                            {project.name}
-                          </a>
-                        ) : (
-                          project.name
-                        )}{' '}
-                        ({project.duration})
+            {/* Skills */}
+            <section aria-labelledby="skills-heading" className="resume-section">
+              <h2 id="skills-heading">Technical Expertise</h2>
+              {skills.coreSkills && skills.coreSkills.length > 0 && (
+                <p className="resume-skills-core">
+                  <strong style={{ color: 'var(--link-strong)' }}>Core Skills:</strong>{' '}
+                  {skills.coreSkills.join(' • ')}
+                </p>
+              )}
+              <div className="resume-skills">
+                {skillGroups
+                  .filter((group) => group.items && group.items.length > 0)
+                  .map((group) => (
+                    <div key={group.label} className="resume-skill-group">
+                      <p>
+                        <strong>{group.label}:</strong> {group.items!.join(', ')}
                       </p>
-                      <ul className="prose" style={{ paddingLeft: 'var(--s-5)' }}>
-                        {project.description.map((desc, idx) => (
-                          <li key={idx}>{parseMarkdownBold(desc)}</li>
-                        ))}
-                      </ul>
-                      {project.technologies && project.technologies.length > 0 && (
-                        <p style={{ color: 'var(--text-soft)', fontSize: 14, marginTop: 'var(--s-1)' }}>
-                          <strong>Technologies:</strong> {project.technologies.join(', ')}
-                        </p>
-                      )}
-                      {project.highlights && project.highlights.length > 0 && (
-                        <ul className="prose" style={{ paddingLeft: 'var(--s-5)', fontSize: 14 }}>
-                          {project.highlights.map((highlight, idx) => (
-                            <li key={idx}>{parseMarkdownBold(highlight)}</li>
-                          ))}
-                        </ul>
-                      )}
                     </div>
                   ))}
+              </div>
+            </section>
+
+            {/* Work Authorization */}
+            {showWorkAuthorization && (
+              <section aria-labelledby="work-authorization-heading" className="resume-section">
+                <h2 id="work-authorization-heading">Work Authorization</h2>
+                <p className="resume-summary">{data.workAuthorization}</p>
+              </section>
+            )}
+
+            {/* Education */}
+            <section aria-labelledby="education-heading" className="resume-section">
+              <h2 id="education-heading">Education</h2>
+              {education.map((edu: Education, index: number) => (
+                <div key={index} className="resume-entry-head" style={{ marginBottom: 'var(--s-2)' }}>
+                  <h3>
+                    {edu.degree} in {edu.field}
+                  </h3>
+                  <span className="resume-meta">
+                    {edu.institution}
+                    {edu.institution && edu.year ? ' | ' : ''}
+                    {edu.year}
+                  </span>
                 </div>
-              )}
-            </div>
-          ))}
-        </section>
-
-        {/* Skills */}
-        <section aria-labelledby="skills-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-          <h2 id="skills-heading" className={sectionHeadingClass}>
-            Skills
-          </h2>
-          <div className="prose">
-            {skills.coreSkills && skills.coreSkills.length > 0 && (
-              <p>
-                <strong>Core:</strong> {skills.coreSkills.join(', ')}
-              </p>
-            )}
-            {skills.frontend && skills.frontend.length > 0 && (
-              <p>
-                <strong>Frontend:</strong> {skills.frontend.join(', ')}
-              </p>
-            )}
-            {skills.backend && skills.backend.length > 0 && (
-              <p>
-                <strong>Backend:</strong> {skills.backend.join(', ')}
-              </p>
-            )}
-            {skills.cloud && skills.cloud.length > 0 && (
-              <p>
-                <strong>Cloud:</strong> {skills.cloud.join(', ')}
-              </p>
-            )}
-            {skills.testing && skills.testing.length > 0 && (
-              <p>
-                <strong>Testing:</strong> {skills.testing.join(', ')}
-              </p>
-            )}
-            {skills.ai && skills.ai.length > 0 && (
-              <p>
-                <strong>AI/ML:</strong> {skills.ai.join(', ')}
-              </p>
-            )}
-            {skills.architecture && skills.architecture.length > 0 && (
-              <p>
-                <strong>Architecture:</strong> {skills.architecture.join(', ')}
-              </p>
-            )}
-            {skills.coreCompetencies && skills.coreCompetencies.length > 0 && (
-              <p>
-                <strong>Core Competencies:</strong> {skills.coreCompetencies.join(', ')}
-              </p>
-            )}
-          </div>
-        </section>
-
-        {/* Work Authorization */}
-        {showWorkAuthorization && (
-          <section aria-labelledby="work-authorization-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-            <h2 id="work-authorization-heading" className={sectionHeadingClass}>
-              Work Authorization
-            </h2>
-            <p className="prose">{data.workAuthorization}</p>
-          </section>
-        )}
-
-        {/* Education */}
-        <section aria-labelledby="education-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-          <h2 id="education-heading" className={sectionHeadingClass}>
-            Education
-          </h2>
-          {education.map((edu: Education, index: number) => (
-            <div key={index} style={{ marginBottom: 'var(--s-4)' }}>
-              <h3>
-                {edu.degree} in {edu.field}
-              </h3>
-              <p className="prose">
-                {edu.institution && <span>{edu.institution}</span>}
-                {edu.year && <span>, {edu.year}</span>}
-              </p>
-            </div>
-          ))}
-        </section>
-
-        {/* Certifications (hidden for UK) */}
-        {!hideCertifications && certifications && certifications.length > 0 && (
-          <section aria-labelledby="certifications-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-            <h2 id="certifications-heading" className={sectionHeadingClass}>
-              Certifications
-            </h2>
-            <ul className="prose" style={{ paddingLeft: 'var(--s-5)' }}>
-              {certifications.map((cert: Certification, index: number) => (
-                <li key={index}>
-                  {cert.name}
-                  {cert.issuer && <span> ({cert.issuer})</span>}
-                  {cert.year && <span>, {cert.year}</span>}
-                </li>
               ))}
-            </ul>
-          </section>
-        )}
+            </section>
 
-        {/* Availability (only for UAE and if present) */}
-        {showAvailability && (
-          <section aria-labelledby="availability-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-            <h2 id="availability-heading" className={sectionHeadingClass}>
-              Availability
-            </h2>
-            <p className="prose">{data.availability}</p>
-          </section>
-        )}
+            {/* Certifications (hidden for UK) */}
+            {!hideCertifications && certifications && certifications.length > 0 && (
+              <section aria-labelledby="certifications-heading" className="resume-section">
+                <h2 id="certifications-heading">Certifications</h2>
+                <ul className="resume-list">
+                  {certifications.map((cert: Certification, index: number) => (
+                    <li key={index}>
+                      {cert.name}
+                      {cert.issuer && <span> ({cert.issuer})</span>}
+                      {cert.year && <span>, {cert.year}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
-        {/* Languages */}
-        <section aria-labelledby="languages-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-          <h2 id="languages-heading" className={sectionHeadingClass}>
-            Languages
-          </h2>
-          <ul className="prose" style={{ paddingLeft: 'var(--s-5)' }}>
-            {languages.map((lang: Language, index: number) => (
-              <li key={index}>
-                {lang.language} ({lang.proficiency})
-              </li>
-            ))}
-          </ul>
-        </section>
+            {/* Availability (only for UAE and if present) */}
+            {showAvailability && (
+              <section aria-labelledby="availability-heading" className="resume-section">
+                <h2 id="availability-heading">Availability</h2>
+                <p className="resume-summary">{data.availability}</p>
+              </section>
+            )}
 
-        {/* References */}
-        <section aria-labelledby="references-heading" className="panel" style={{ marginBottom: 'var(--s-6)' }}>
-          <h2 id="references-heading" className={sectionHeadingClass}>
-            References
-          </h2>
-          <p className="prose">{referencesText}</p>
-        </section>
+            {/* Languages */}
+            <section aria-labelledby="languages-heading" className="resume-section">
+              <h2 id="languages-heading">Languages</h2>
+              <p className="resume-summary">
+                {languages.map((lang: Language) => `${lang.language} (${lang.proficiency})`).join(' • ')}
+              </p>
+            </section>
 
-        {/* Download PDF */}
-        <div style={{ textAlign: 'center', marginTop: 'var(--s-8)' }}>
-          <a
-            href={`/api/resume-pdf?country=${country}`}
-            download
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-            aria-label={`Download PDF resume for ${COUNTRIES[country]}`}
-          >
-            Download PDF
-          </a>
+            {/* References */}
+            <section aria-labelledby="references-heading" className="resume-section">
+              <h2 id="references-heading">References</h2>
+              <p className="resume-summary">{referencesText}</p>
+            </section>
+
+            <div className="resume-actions no-print">
+              <a
+                href={`/api/resume-pdf?country=${country}`}
+                download
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                aria-label={`Download PDF resume for ${COUNTRIES[country]}`}
+              >
+                Download PDF
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>

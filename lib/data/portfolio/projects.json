@@ -133,7 +133,7 @@
     "title": "GatheredHQ — Restaurant POS & Digital Menu SaaS",
     "company": "Yexaa Technologies FZCO",
     "role": "Solution Architect",
-    "duration": "2025 - Present",
+    "duration": "2025 - 2026",
     "description": "Architected a production-grade, API-first hospitality SaaS (restaurant POS) from the ground up — QR digital menus, table-service and self-service ordering, real-time kitchen/bar display systems, bookings, and Stripe payments, with AI menu import and a Gemini-powered guest ordering assistant on a multi-tenant Supabase backend built to scale to 1M+ users.",
     "technologies": [
       "Next.js",
@@ -191,5 +191,29 @@
     ],
     "category": "fullstack",
     "featured": false
+  },
+  {
+    "id": "rexqr",
+    "title": "RexQR — Multi-Tenant Hospitality & Services SaaS",
+    "company": "Yexaa Technologies FZCO",
+    "role": "Solution Architect",
+    "duration": "2025 - 2026",
+    "description": "Architected RexQR, a multi-tenant SaaS spanning Hospitality (restaurants, cafés, bars) and Services (salons, car wash, clinics) from a single vertical-aware platform — NestJS/Fastify backend, an AI Sales Agent (Gemini), AI reports & analytics, and full guest ordering, Stripe payments, bookings, loyalty/CRM, and KDS across owner, staff, and guest apps.",
+    "technologies": [
+      "NestJS",
+      "Fastify",
+      "React",
+      "Vite",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Stripe",
+      "Redis",
+      "Google Gemini",
+      "Turborepo",
+      "Docker"
+    ],
+    "category": "fullstack",
+    "featured": true
   }
 ]

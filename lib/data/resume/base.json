@@ -3,95 +3,53 @@
     "name": "Subhash Mahimaluri",
     "title": "Solution Architect | React Architect | Frontend Lead | Next.js | React Native | AI Engineer | 15+ Yrs",
     "email": "subhashmahimaluri@gmail.com",
-    "phone": "+971 529128793",
-    "location": "Dubai, United Arab Emirates | Open to Onsite / Hybrid / Remote",
+    "phone": "+91 9980551764 | +971 529128793",
+    "location": "Bengaluru, India",
     "linkedin": "https://www.linkedin.com/in/subhash-mahimaluri",
     "github": "https://github.com/subhashmahimaluri",
     "website": "https://subhashai.cloud",
-    "calendly": "https://cal.com/subhashmt"
+    "calendly": "https://cal.com/subhashmt",
+    "summary": "**Solution Architect** with **15+ years** building **high-scale SaaS platforms** and **cloud-native applications** for **Fortune 500 enterprises** including Shell, National Grid, and Intuit. Expert in **Frontend Architecture (React, Next.js, Micro Frontends)**, **React Native mobile development**, and **AI/LLM Integration (RAG, Vector DBs)**. Proven hands-on engineering leader driving **end-to-end product development** and **cross-functional and distributed team delivery** across **web, iOS, and Android**. Track record of **optimizing system performance by 40%**, **reducing infrastructure costs by 25%**, and delivering **production-grade AI solutions**. Open to opportunities in Bengaluru and across India."
   },
   "experience": [
     {
-      "id": "aeries-2026",
-      "company": "Aeries Technology",
-      "role": "Solution Architect",
-      "location": "Bengaluru, India",
-      "startDate": "2026-04-01",
-      "endDate": "present",
-      "highlights": [
-        "Solution Architect on a strategic enterprise client engagement, defining the **multi-frontend (Micro-Frontend) architecture** and shared platform standards for a large-scale application landscape",
-        "Designing an **AI Agentic Architecture** — **copilot agents** that assist users and automate workflows across the product suite using modern **LLM orchestration** patterns",
-        "Establishing **frontend architecture**, reusable component standards, and AI-integration guidelines across distributed engineering teams"
-      ],
-      "projects": []
-    },
-    {
-      "id": "yexaa-2025",
+      "id": "yexaa-fzco-2025",
       "company": "Yexaa Technologies FZCO",
       "role": "Solution Architect",
       "location": "Dubai, United Arab Emirates",
       "startDate": "2025-07-01",
-      "endDate": "2026-03-01",
+      "endDate": "present",
       "highlights": [
-        "Solution Architect and hands-on technical lead for **multiple production-grade, AI-driven SaaS platforms**, owning architecture across **Web (Next.js / React)**, **React Native** mobile, **Node.js** services, and **Supabase / PostgreSQL**",
-        "Designed and shipped **Agentic AI** capabilities — **AI Sales Agents**, conversational assistants, and **Retrieval-Augmented Generation (RAG)** pipelines with **LLM orchestration** and advanced prompt engineering for context-aware, reliable responses",
-        "Architected **multi-tenant SaaS** with role-based access (**Supabase RLS**), scalable API / BFF layers, and real-time event-driven flows supporting concurrent tenants and high traffic",
-        "Built and published **React Native** mobile apps to the **Apple App Store** and **Google Play Store** with **Push Notifications (FCM/APNs)**, **Social Auth**, **Subscriptions**, and **In-App Purchases**",
-        "Delivered high-performance web experiences with **100/100 Lighthouse scores** and sub-second load times through optimized **React**, **Next.js**, and **TypeScript**"
+        "Led the end-to-end design and development of **PlanBPass**, a production-grade **AI-driven SaaS platform** delivering structured decision support across **Web, iOS, and Android**",
+        "Architected the complete product stack including **Next.js / React** web frontend, **React Native** mobile applications, **Node.js** services, **Supabase/PostgreSQL** backend, and cloud infrastructure",
+        "Designed and implemented a production-ready **AI Advisor system**, leveraging **LLM orchestration**, **Retrieval-Augmented Generation (RAG)**, and advanced prompt engineering to deliver context-aware, reliable responses",
+        "Built and shipped **React Native CLI** mobile apps with **Push Notifications (FCM/APNs)**, **Social Authentication (Google, Apple)**, **Subscriptions**, and **In-App Purchases**, ensuring full **App Store** and **Play Store** compliance",
+        "Successfully published and managed live mobile applications on **Apple App Store** and **Google Play Store**, owning release pipelines, versioning, and store review processes",
+        "Delivered high-performance web experiences, achieving **100/100 Lighthouse scores** through optimized **React**, **Next.js**, and **TypeScript** implementations with sub-second load times"
       ],
       "projects": [
         {
-          "name": "GatheredHQ — Restaurant POS & Digital Menu SaaS",
+          "name": "GatheredHQ — Digital Menu & Restaurant SaaS",
           "duration": "2025",
           "link": "https://www.gatheredhq.com/",
           "description": [
-            "Architected a **production-grade, API-first hospitality SaaS** (restaurant POS) from the ground up — QR digital menus, table-service and self-service ordering, takeaway, kitchen/bar coordination, bookings, and payments",
-            "Designed a **domain-driven monorepo** (pnpm + Turborepo): a **Next.js** marketing site, **Vite + React** owner dashboard and guest apps, and a dedicated **Node.js** API owning all business logic",
-            "Built a centralized **Supabase (PostgreSQL)** backend with **Row Level Security**, multi-restaurant tenancy, and **JWT / RBAC** so every frontend consumes one secure, cacheable API contract",
-            "Implemented **real-time Kitchen/Bar Display Systems** and live order tracking via an API-proxied **WebSocket** layer, plus **Stripe** payments including split-bill and **Stripe Connect** payouts",
-            "Integrated **AI features** — menu import from PDF/image, AI descriptions and images, and a guest **AI ordering assistant** powered by **Google Gemini**",
-            "Drove a **TDD-first** delivery culture (**Vitest + Playwright**, 90%+ coverage) and a multi-language guest experience (14 languages, RTL) on a foundation designed to scale to **1M+ users**"
+            "Led the end-to-end migration of **GatheredHQ** from a Base44 prototype to a production-grade **Next.js SaaS platform**, establishing a scalable foundation for long-term growth",
+            "Architected a multi-restaurant, role-based SaaS backend using **Supabase (PostgreSQL)** with **Row Level Security (RLS)**, supporting Owners, Managers, and Waiters across multiple restaurants",
+            "Designed and implemented a centralized backend architecture, enabling seamless consumption by Web (**Next.js**) and future mobile applications, independent of frontend uptime",
+            "Built a secure onboarding and restaurant setup flow, allowing owners to create and manage multiple restaurants, staff roles, menus, and QR-based public menu pages",
+            "Implemented high-performance, SEO-friendly public menu pages with optimized **Next.js rendering** and mobile-first UX",
+            "Established Agile delivery process as Product Owner, working closely with the client through weekly sprints, pilot feedback, and iterative feature refinement",
+            "Delivered a live MVP within one week, enabling real-world pilot deployment in a restaurant environment",
+            "Ensured production readiness through schema design, migrations, defect stabilization, and QA workflows during pilot rollout"
           ],
           "technologies": [
             "Next.js",
             "React",
             "TypeScript",
-            "Node.js",
             "Supabase",
             "PostgreSQL",
             "RLS",
-            "Stripe",
-            "Redis",
-            "Google Gemini",
-            "Playwright",
             "Tailwind CSS"
-          ]
-        },
-        {
-          "name": "RexQR — Multi-Tenant Hospitality & Services SaaS",
-          "duration": "2025 – 2026",
-          "link": "https://www.rexqr.com/",
-          "description": [
-            "Architected **RexQR**, a **multi-tenant SaaS** spanning two verticals from a single vertical-aware platform — **Hospitality** (restaurants, cafés, bars) and **Services** (salons, car wash, clinics)",
-            "Designed the backend on **NestJS + Fastify** with strict **domain-driven modules**, **JWT / RBAC** guards, **Zod** validation, and a consistent API response contract over **Supabase / PostgreSQL**",
-            "Built an **AI Sales Agent** (**Google Gemini**) — a sales-optimized guest assistant with proactive upsell, smart pairing, and menu-grounded suggestions to drive **revenue growth**",
-            "Delivered **AI-powered reports & analytics**, AI menu extraction, AI translations, and AI dietary/calorie inference, all metered through a per-venue **AI-credit** system",
-            "Shipped full **guest ordering, payments (Stripe Connect, split bill, tips), bookings, waitlist, loyalty & CRM, KDS, and queue/token management** across owner, staff, and guest apps",
-            "Implemented **subscription billing tiers**, multi-venue management, real-time **WebSocket** updates, and a services-vertical queue system (counters, tokens, secure document uploads)"
-          ],
-          "technologies": [
-            "NestJS",
-            "Fastify",
-            "React",
-            "Vite",
-            "TypeScript",
-            "Supabase",
-            "PostgreSQL",
-            "Stripe",
-            "Redis",
-            "Google Gemini",
-            "Turborepo",
-            "Docker"
           ]
         }
       ]
@@ -113,7 +71,7 @@
           "duration": "1+ Year",
           "description": [
             "Built enterprise UI with **Next.js (SSR)**, **React 18**, **TypeScript** with reusable component architecture",
-            "Designed **AWS CI/CD pipelines (CodePipeline, Lambda, S3, CloudFront)** → **weekly to daily deployments**",
+            "Designed **AWS CI/CD pipelines (CodePipeline, Lambda, S3, CloudFront)** → weekly to daily deployments",
             "Achieved **90%+ test coverage** with **Vitest & Playwright** and **25% faster API responses**",
             "Owned **frontend architecture** decisions, standards enforcement, and cross-team collaboration"
           ],
@@ -132,8 +90,8 @@
           "duration": "1 Year",
           "description": [
             "Designed **enterprise AI assistant** using **OpenAI-based LLMs** and **production RAG pipelines**, **FAISS/Pinecone**, **Node.js microservices**",
-            "**Fine-tuned GPT models** → **reduced support tickets by 20%** with context-aware responses",
-            "Integrated **Azure services (CosmosDB, Redis Cache)** → **25% lower latency**, **15% infrastructure savings**"
+            "Fine-tuned GPT models → **reduced support tickets by 20%** with context-aware responses",
+            "Integrated **Azure services (CosmosDB, Redis Cache) → 25% lower latency**, **15% infrastructure savings**"
           ],
           "technologies": [
             "React",
@@ -150,7 +108,7 @@
           "name": "Shell FleetHub Modernization",
           "duration": "1.5 Years",
           "description": [
-            "Led **React 18 + TypeScript** modernization with **Redux Toolkit + RTK Query** → **40% faster load times**",
+            "Led **React 18 + TypeScript** modernization with **Redux Toolkit + RTK Query → 40% faster load times**",
             "Adopted **Micro-Frontend architecture** with **Module Federation** for independent deployments",
             "Optimized **Azure cloud infrastructure** with **Auto Scaling**, **Load Balancers**, **Redis caching**"
           ],
@@ -167,6 +125,20 @@
       ]
     },
     {
+      "id": "yexaa-consultancy-2021",
+      "company": "Yexaa Consultancy Services",
+      "role": "Lead Software Engineer",
+      "location": "Bengaluru, India",
+      "startDate": "2021-01-01",
+      "endDate": "2022-03-01",
+      "highlights": [
+        "Delivered **full-stack SaaS projects** for **fintech and e-commerce clients** using **React**, **TypeScript**, **Node.js**, **GraphQL**, **AWS**",
+        "Architected **Node.js APIs** with **MongoDB & DynamoDB** serving **100K+ daily users**",
+        "Deployed **serverless microservices (AWS Lambda)** with **CloudFront CDN → 40% performance improvement**",
+        "Built **component libraries & design systems** reducing development effort by **25%**"
+      ]
+    },
+    {
       "id": "altimetrik-2018",
       "company": "Altimetrik",
       "role": "Senior Staff Software Engineer",
@@ -176,10 +148,9 @@
       "highlights": [
         "Owned **full-stack delivery** for **Intuit QuickBooks Online** with **React**, **TypeScript**, **Node.js**, **GraphQL**",
         "Developed **60+ SEO-optimized landing pages** driving global SMB adoption",
-        "Migrated to **React Hooks** → **30% frontend performance boost** with **95%+ test coverage**",
+        "Migrated to **React Hooks → 30% frontend performance boost** with **95%+ test coverage**",
         "Automated **AWS deployments (Lambda, EC2, CloudFront)** ensuring **high availability** for millions of users"
-      ],
-      "projects": []
+      ]
     },
     {
       "id": "mindtree-2014",
@@ -190,11 +161,10 @@
       "endDate": "2018-07-01",
       "highlights": [
         "Led **React, Redux, Webpack** development for **Time Inc** media brands",
-        "Built **design system & component library** → **25% faster site builds** across global teams",
-        "Implemented **code-splitting & lazy loading** → **40% Lighthouse/SEO improvement**",
+        "Built **design system & component library → 25% faster site builds** across global teams",
+        "Implemented **code-splitting & lazy loading → 40% Lighthouse/SEO improvement**",
         "Drove **WCAG 2.0 AA accessibility** compliance and SEO optimization"
-      ],
-      "projects": []
+      ]
     }
   ],
   "skills": {
@@ -214,12 +184,9 @@
       "Azure",
       "Docker",
       "CI/CD",
-      "Solution Architecture",
       "AI Integration",
       "LLM",
       "RAG",
-      "Agentic AI",
-      "AI Agents",
       "SaaS Architecture",
       "Cloud Native"
     ],
@@ -271,15 +238,10 @@
     ],
     "ai": [
       "OpenAI",
-      "Google Gemini",
       "LangChain",
       "LLMs",
       "RAG",
-      "Agentic AI",
       "AI Agents",
-      "AI Sales Agents",
-      "Copilot Agents",
-      "Multi-Agent Orchestration",
       "n8n",
       "Prompt Engineering"
     ],
@@ -289,38 +251,28 @@
       "Cloud-Native",
       "API/BFF Patterns",
       "Event-Driven Systems",
-      "AI-Augmented Solutions",
-      "Agentic AI Architecture",
-      "Multi-Tenant SaaS"
+      "AI-Augmented Solutions"
     ],
     "coreCompetencies": [
-      "Frontend Architecture",
-      "Product Engineering",
-      "Agile Methodologies",
-      "Test-Driven Development",
-      "AI System Design",
-      "Performance Optimization",
-      "Cross-Functional Leadership"
-    ],
-    "searchKeywords": [
-      "Solution Architect",
-      "AI Solution Architect",
-      "React Architect",
-      "Frontend Lead",
-      "SaaS Engineer",
-      "Cloud Engineer",
-      "AI Engineer",
-      "Technical Lead",
-      "Product Engineer",
-      "Mobile App Engineer"
+      "Technical Leadership",
+      "Cross-Functional Team Delivery",
+      "Agile / Scrum",
+      "Product Ownership",
+      "Mentoring & Coaching",
+      "Stakeholder Management"
     ]
   },
   "education": [
     {
       "degree": "Bachelor of Technology",
       "field": "Computer Science & Engineering",
-      "institution": "JNTU Hyderabad",
+      "institution": "ANU, Guntur",
       "year": "2016"
+    },
+    {
+      "degree": "MBA",
+      "field": "Technology Management",
+      "institution": "Osmania University, Hyderabad"
     }
   ],
   "certifications": [
@@ -340,6 +292,5 @@
       "proficiency": "Fluent"
     }
   ],
-  "availability": "Available for full-time employment and contract roles. Consulting and B2B project delivery available through registered UAE entity (Yexaa Technologies FZCO) when required.. Open to onsite, hybrid, and remote collaboration.",
   "references": "References and detailed portfolio available upon request"
 }

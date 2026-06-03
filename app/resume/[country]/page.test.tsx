@@ -200,11 +200,11 @@ describe('ResumePage', () => {
     expect(
       screen.getByRole('region', { name: 'Professional Summary' }).querySelector('strong')
     ).toHaveTextContent('Software Engineer');
-    expect(screen.getByRole('heading', { level: 2, name: 'Experience' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Professional Experience' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: 'Dev at Tech Corp' })).toBeInTheDocument();
     // Highlight 'Developed **key features**' is split across nodes by parseMarkdownBold.
-    expect(screen.getByRole('region', { name: 'Experience' })).toHaveTextContent('Developed key features');
-    expect(screen.getByRole('heading', { level: 2, name: 'Skills' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Professional Experience' })).toHaveTextContent('Developed key features');
+    expect(screen.getByRole('heading', { level: 2, name: 'Technical Expertise' })).toBeInTheDocument();
 
     const pdfLink = screen.getByRole('link', { name: /Download PDF/i });
     expect(pdfLink).toBeInTheDocument();
@@ -255,7 +255,7 @@ describe('ResumePage', () => {
     expect(screen.getByRole('heading', { level: 4, name: 'Projects:' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Platform' })).toHaveAttribute('href', 'https://proj.dev');
     expect(screen.getByText(/Go, k8s/)).toBeInTheDocument();
-    expect(screen.getByRole('region', { name: 'Skills' })).toHaveTextContent('Leadership');
+    expect(screen.getByRole('region', { name: 'Technical Expertise' })).toHaveTextContent('Leadership');
     expect(screen.getByRole('heading', { level: 2, name: 'Work Authorization' })).toBeInTheDocument();
     expect(screen.getByText('EU Citizen')).toBeInTheDocument();
     expect(screen.getByText('MSc in CS')).toBeInTheDocument();
@@ -315,15 +315,15 @@ describe('ResumePage', () => {
     expect(summarySection).toHaveAttribute('aria-labelledby', 'professional-summary-heading');
     expect(screen.getByRole('heading', { level: 2, name: 'Professional Summary' })).toHaveAttribute('id', 'professional-summary-heading');
 
-    const experienceSection = screen.getByRole('region', { name: 'Experience' });
+    const experienceSection = screen.getByRole('region', { name: 'Professional Experience' });
     expect(experienceSection).toBeInTheDocument();
     expect(experienceSection).toHaveAttribute('aria-labelledby', 'experience-heading');
-    expect(screen.getByRole('heading', { level: 2, name: 'Experience' })).toHaveAttribute('id', 'experience-heading');
+    expect(screen.getByRole('heading', { level: 2, name: 'Professional Experience' })).toHaveAttribute('id', 'experience-heading');
 
-    const skillsSection = screen.getByRole('region', { name: 'Skills' });
+    const skillsSection = screen.getByRole('region', { name: 'Technical Expertise' });
     expect(skillsSection).toBeInTheDocument();
     expect(skillsSection).toHaveAttribute('aria-labelledby', 'skills-heading');
-    expect(screen.getByRole('heading', { level: 2, name: 'Skills' })).toHaveAttribute('id', 'skills-heading');
+    expect(screen.getByRole('heading', { level: 2, name: 'Technical Expertise' })).toHaveAttribute('id', 'skills-heading');
 
     const educationSection = screen.getByRole('region', { name: 'Education' });
     expect(educationSection).toBeInTheDocument();
