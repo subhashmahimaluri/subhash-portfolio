@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: subhash-portfolio:latest
+    container_name: subhash-portfolio
+    ports:
+      - '3005:3005'
+    environment:
+      - NODE_ENV=production
+      - PORT=3005
+      - NEXT_PUBLIC_SITE_URL=https://subhashai.cloud
+      - NEXT_PUBLIC_SITE_NAME=subhashai.cloud
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://localhost:3005/']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

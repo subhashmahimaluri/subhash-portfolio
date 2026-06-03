@@ -41,13 +41,18 @@ export function FeaturedProject() {
             <div className="featured-actions">
               <a
                 className="btn btn-white"
-                href="https://github.com/subhashmahimaluri"
+                href="https://github.com/subhashmahimaluri/sparks"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 View on GitHub
               </a>
-              <a className="btn btn-outline-dark" href="/portfolio">
+              <a
+                className="btn btn-outline-dark"
+                href="https://github.com/subhashmahimaluri/sparks/blob/main/ARCHITECTURE.md"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Read the Architecture
               </a>
             </div>

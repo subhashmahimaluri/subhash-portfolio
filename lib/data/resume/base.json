@@ -187,6 +187,8 @@
       "AI Integration",
       "LLM",
       "RAG",
+      "Agent Architecture",
+      "Harness Engineering",
       "SaaS Architecture",
       "Cloud Native"
     ],
@@ -243,7 +245,10 @@
       "RAG",
       "AI Agents",
       "n8n",
-      "Prompt Engineering"
+      "Prompt Engineering",
+      "Agentic Architecture",
+      "AI Harness Engineering",
+      "Multi-Agent Systems"
     ],
     "architecture": [
       "Micro-Frontends",
@@ -251,7 +256,8 @@
       "Cloud-Native",
       "API/BFF Patterns",
       "Event-Driven Systems",
-      "AI-Augmented Solutions"
+      "AI-Augmented Solutions",
+      "Agentic & AI-Augmented Systems"
     ],
     "coreCompetencies": [
       "Technical Leadership",
@@ -266,13 +272,13 @@
     {
       "degree": "Bachelor of Technology",
       "field": "Computer Science & Engineering",
-      "institution": "ANU, Guntur",
+      "institution": "ANU, Guntur, India",
       "year": "2016"
     },
     {
       "degree": "MBA",
       "field": "Technology Management",
-      "institution": "Osmania University, Hyderabad"
+      "institution": "Osmania University, Hyderabad, India"
     }
   ],
   "certifications": [

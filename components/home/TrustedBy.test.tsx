@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { TrustedBy } from './TrustedBy';
 
-const EXPECTED = ['National Grid UK', 'Shell', 'Intuit', 'Yexaa Technologies'];
+const EXPECTED = ['National Grid UK', 'Shell', 'Intuit', 'TimeInc'];
 
 describe('TrustedBy', () => {
   it('renders all four enterprise wordmarks', () => {

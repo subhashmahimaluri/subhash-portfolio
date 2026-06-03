@@ -6,6 +6,8 @@ const EXPERTISE: ReadonlyArray<string> = [
   'Node.js',
   'Micro Frontends',
   'Agentic AI',
+  'Agent Architecture',
+  'Harness Engineering',
   'AI / LLM Systems',
   'RAG · Vector DBs',
   'Cloud Architecture',

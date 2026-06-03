@@ -2,7 +2,7 @@ const ORGANISATIONS: ReadonlyArray<string> = [
   'National Grid UK',
   'Shell',
   'Intuit',
-  'Yexaa Technologies',
+  'TimeInc',
 ];
 
 /**

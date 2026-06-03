@@ -96,7 +96,7 @@ export default function ContactPage() {
               sponsorship (UAE, UK, EU).
             </p>
             <p>
-              <strong>Markets:</strong> Open to opportunities in India, UAE, Germany, UK, EU, and
+              <strong>Markets:</strong> Open to opportunities in UAE, Germany, UK, EU, and
               remote positions globally — typically responding within 24 hours.
             </p>
           </div>
