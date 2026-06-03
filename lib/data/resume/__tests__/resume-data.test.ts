@@ -26,7 +26,8 @@ describe('Resume Data Integrity', () => {
 
     it('should have a valid personalInfo section', () => {
       const { personalInfo } = base;
-      const required = ['name', 'title', 'email', 'phone', 'location', 'linkedin', 'github', 'calendly', 'website', 'summary'];
+      // `summary` lives on the country overrides (per-market), not on base.
+      const required = ['name', 'title', 'email', 'phone', 'location', 'linkedin', 'github', 'calendly', 'website'];
       required.forEach(field => {
         expect(personalInfo).toHaveProperty(field);
         expect(personalInfo[field as keyof typeof personalInfo]).not.toBe('');
@@ -105,10 +106,10 @@ describe('Resume Data Integrity', () => {
 
     it('should only contain valid override keys', () => {
       const validKeys = [
-        'personalInfo', 'workAuthorization', 'professionalSummary', 
-        'references', 'gdprNotice', 'languageRequirement', 
+        'personalInfo', 'workAuthorization', 'professionalSummary',
+        'references', 'gdprNotice', 'languageRequirement',
         'truncateExperience', 'maxPages', 'additionalSections', 'hideSections',
-        'skills'
+        'skills', 'availability'
       ];
       
       overrides.forEach(({ name, data }) => {

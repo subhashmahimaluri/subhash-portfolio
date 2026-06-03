@@ -7,7 +7,7 @@ export interface PersonalInfo {
   linkedin: string;
   github: string;
   calendly: string;
-  summary: string;
+  summary?: string;
   website?: string;
 }
 

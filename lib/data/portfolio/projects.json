@@ -129,45 +129,24 @@
     "featured": true
   },
   {
-    "id": "planbpass",
-    "title": "PlanBPass - Full-Stack AI Advisory Platform",
+    "id": "gatheredhq",
+    "title": "GatheredHQ — Restaurant POS & Digital Menu SaaS",
     "company": "Yexaa Technologies FZCO",
-    "role": "Principal Product Engineer",
+    "role": "Solution Architect",
     "duration": "2025 - Present",
-    "description": "Founded and built PlanBPass, a full-stack AI-driven advisory platform delivering structured decision support across web, iOS, and Android.",
-    "challenges": [
-      "Building a complete product from zero to production",
-      "Designing reliable AI advisor system with context-aware responses",
-      "Ensuring feature parity across web and mobile platforms",
-      "Implementing secure backend with authentication and real-time capabilities"
-    ],
-    "solutions": [
-      "Architected entire product stack: frontend, mobile apps, backend, AI workflows, and cloud infrastructure",
-      "Designed AI Advisor using LLM orchestration, prompt engineering, and RAG-based knowledge grounding",
-      "Built AI automation workflows using n8n for task orchestration and tool execution",
-      "Developed cross-platform mobile apps (iOS & Android) using React Native",
-      "Implemented secure backend with PostgreSQL (Supabase), auth, RLS, and real-time features",
-      "Delivered high-performance UI using React, Next.js, TypeScript, and Tailwind CSS",
-      "Containerized and deployed services using Docker with CI/CD pipelines"
-    ],
-    "impact": [
-      "Successfully launched MVP across web and mobile platforms",
-      "Prepared iOS and Android applications for store deployment",
-      "Validated Phase-2 architecture through live demos",
-      "Actively engaging with early users, partners, and investors"
-    ],
+    "description": "Architected a production-grade, API-first hospitality SaaS (restaurant POS) from the ground up — QR digital menus, table-service and self-service ordering, real-time kitchen/bar display systems, bookings, and Stripe payments, with AI menu import and a Gemini-powered guest ordering assistant on a multi-tenant Supabase backend built to scale to 1M+ users.",
     "technologies": [
-      "React",
       "Next.js",
+      "React",
       "TypeScript",
-      "React Native",
       "Node.js",
-      "PostgreSQL",
       "Supabase",
-      "LLMs",
-      "RAG",
-      "n8n",
-      "Docker",
+      "PostgreSQL",
+      "RLS",
+      "Stripe",
+      "Redis",
+      "Google Gemini",
+      "Playwright",
       "Tailwind CSS"
     ],
     "category": "fullstack",

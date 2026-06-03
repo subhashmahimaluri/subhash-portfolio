@@ -1,10 +1,12 @@
 {
   "personalInfo": {
-    "phone": "+44 7700 900000",
-    "location": "London, UK",
-    "summary": "Senior Full Stack Engineer based in London, expert in React and Node.js with experience in UK-based financial technology and e-commerce sectors."
+    "title": "Solution Architect | React Architect | Frontend Lead | Next.js | React Native | 15+ Yrs",
+    "phone": "+971 529128793",
+    "location": "Open to UK Relocation | Previous Onsite UK Experience (National Grid)",
+    "website": "https://subhashai.cloud",
+    "summary": "**Solution Architect & React Architect** with **15+ years** building **high-scale SaaS platforms** and **cloud native applications** for **Fortune 500 enterprises**. Expert in **Frontend Architecture (React, Next.js, Micro Frontends)**, **React Native mobile development**, and **AI integrations (RAG-based systems)**. Proven hands on engineering leader driving **end-to-end product development** and **cross-functional and distributed team delivery** across **web, iOS, and Android**. Track record of **optimizing system performance by 40%**, **reducing infrastructure costs by 25%**, and delivering **production-grade AI solutions**. **1+ year onsite UK experience with National Grid**. Open to UK relocation with employer-sponsored visa support."
   },
+  "workAuthorization": "Right to Work: Visa Sponsorship Required | 1+ Year Onsite UK Experience (National Grid)",
   "truncateExperience": 3,
-  "maxPages": 2,
-  "workAuthorization": "British Citizen / Right to Work in UK"
+  "maxPages": 2
 }

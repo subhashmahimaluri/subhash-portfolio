@@ -1,65 +1,319 @@
 {
   "personalInfo": {
     "name": "Subhash Mahimaluri",
-    "title": "Full Stack Engineer & AI Solutions Architect",
-    "email": "hello@subhash.dev",
-    "phone": "+91 98765 43210",
-    "location": "Hyderabad, India",
-    "linkedin": "https://linkedin.com/in/subhashm",
-    "github": "https://github.com/subhashm",
-    "calendly": "https://calendly.com/subhashm",
-    "website": "https://subhash.dev",
-    "summary": "Full Stack Engineer with 8+ years of experience building scalable web applications and AI-driven solutions. Expert in React, Next.js, and Node.js."
+    "title": "Solution Architect | React Architect | Frontend Lead | Next.js | React Native | AI Engineer | 15+ Yrs",
+    "email": "subhashmahimaluri@gmail.com",
+    "phone": "+971 529128793",
+    "location": "Dubai, United Arab Emirates | Open to Onsite / Hybrid / Remote",
+    "linkedin": "https://www.linkedin.com/in/subhash-mahimaluri",
+    "github": "https://github.com/subhashmahimaluri",
+    "website": "https://subhashai.cloud",
+    "calendly": "https://cal.com/subhashmt"
   },
   "experience": [
     {
-      "id": "senior-engineer-at-tech-corp",
-      "company": "Tech Corp Solutions",
-      "role": "Senior Full Stack Engineer",
-      "location": "Remote",
-      "startDate": "2021-01-01",
+      "id": "aeries-2026",
+      "company": "Aeries Technology",
+      "role": "Solution Architect",
+      "location": "Bengaluru, India",
+      "startDate": "2026-04-01",
       "endDate": "present",
       "highlights": [
-        "Led the migration of a legacy monolithic application to a modern **Next.js** microservices architecture, improving performance by 40%.",
-        "Architected and implemented a real-time data visualization dashboard using **Socket.io** and **D3.js**.",
-        "Mentored a team of 5 junior developers and established coding standards and CI/CD best practices."
+        "Solution Architect on a strategic enterprise client engagement, defining the **multi-frontend (Micro-Frontend) architecture** and shared platform standards for a large-scale application landscape",
+        "Designing an **AI Agentic Architecture** — **copilot agents** that assist users and automate workflows across the product suite using modern **LLM orchestration** patterns",
+        "Establishing **frontend architecture**, reusable component standards, and AI-integration guidelines across distributed engineering teams"
+      ],
+      "projects": []
+    },
+    {
+      "id": "yexaa-2025",
+      "company": "Yexaa Technologies FZCO",
+      "role": "Solution Architect",
+      "location": "Dubai, United Arab Emirates",
+      "startDate": "2025-07-01",
+      "endDate": "2026-03-01",
+      "highlights": [
+        "Solution Architect and hands-on technical lead for **multiple production-grade, AI-driven SaaS platforms**, owning architecture across **Web (Next.js / React)**, **React Native** mobile, **Node.js** services, and **Supabase / PostgreSQL**",
+        "Designed and shipped **Agentic AI** capabilities — **AI Sales Agents**, conversational assistants, and **Retrieval-Augmented Generation (RAG)** pipelines with **LLM orchestration** and advanced prompt engineering for context-aware, reliable responses",
+        "Architected **multi-tenant SaaS** with role-based access (**Supabase RLS**), scalable API / BFF layers, and real-time event-driven flows supporting concurrent tenants and high traffic",
+        "Built and published **React Native** mobile apps to the **Apple App Store** and **Google Play Store** with **Push Notifications (FCM/APNs)**, **Social Auth**, **Subscriptions**, and **In-App Purchases**",
+        "Delivered high-performance web experiences with **100/100 Lighthouse scores** and sub-second load times through optimized **React**, **Next.js**, and **TypeScript**"
+      ],
+      "projects": [
+        {
+          "name": "GatheredHQ — Restaurant POS & Digital Menu SaaS",
+          "duration": "2025",
+          "link": "https://www.gatheredhq.com/",
+          "description": [
+            "Architected a **production-grade, API-first hospitality SaaS** (restaurant POS) from the ground up — QR digital menus, table-service and self-service ordering, takeaway, kitchen/bar coordination, bookings, and payments",
+            "Designed a **domain-driven monorepo** (pnpm + Turborepo): a **Next.js** marketing site, **Vite + React** owner dashboard and guest apps, and a dedicated **Node.js** API owning all business logic",
+            "Built a centralized **Supabase (PostgreSQL)** backend with **Row Level Security**, multi-restaurant tenancy, and **JWT / RBAC** so every frontend consumes one secure, cacheable API contract",
+            "Implemented **real-time Kitchen/Bar Display Systems** and live order tracking via an API-proxied **WebSocket** layer, plus **Stripe** payments including split-bill and **Stripe Connect** payouts",
+            "Integrated **AI features** — menu import from PDF/image, AI descriptions and images, and a guest **AI ordering assistant** powered by **Google Gemini**",
+            "Drove a **TDD-first** delivery culture (**Vitest + Playwright**, 90%+ coverage) and a multi-language guest experience (14 languages, RTL) on a foundation designed to scale to **1M+ users**"
+          ],
+          "technologies": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Supabase",
+            "PostgreSQL",
+            "RLS",
+            "Stripe",
+            "Redis",
+            "Google Gemini",
+            "Playwright",
+            "Tailwind CSS"
+          ]
+        },
+        {
+          "name": "RexQR — Multi-Tenant Hospitality & Services SaaS",
+          "duration": "2025 – 2026",
+          "link": "https://www.rexqr.com/",
+          "description": [
+            "Architected **RexQR**, a **multi-tenant SaaS** spanning two verticals from a single vertical-aware platform — **Hospitality** (restaurants, cafés, bars) and **Services** (salons, car wash, clinics)",
+            "Designed the backend on **NestJS + Fastify** with strict **domain-driven modules**, **JWT / RBAC** guards, **Zod** validation, and a consistent API response contract over **Supabase / PostgreSQL**",
+            "Built an **AI Sales Agent** (**Google Gemini**) — a sales-optimized guest assistant with proactive upsell, smart pairing, and menu-grounded suggestions to drive **revenue growth**",
+            "Delivered **AI-powered reports & analytics**, AI menu extraction, AI translations, and AI dietary/calorie inference, all metered through a per-venue **AI-credit** system",
+            "Shipped full **guest ordering, payments (Stripe Connect, split bill, tips), bookings, waitlist, loyalty & CRM, KDS, and queue/token management** across owner, staff, and guest apps",
+            "Implemented **subscription billing tiers**, multi-venue management, real-time **WebSocket** updates, and a services-vertical queue system (counters, tokens, secure document uploads)"
+          ],
+          "technologies": [
+            "NestJS",
+            "Fastify",
+            "React",
+            "Vite",
+            "TypeScript",
+            "Supabase",
+            "PostgreSQL",
+            "Stripe",
+            "Redis",
+            "Google Gemini",
+            "Turborepo",
+            "Docker"
+          ]
+        }
       ]
     },
     {
-      "id": "software-engineer-at-innovate-soft",
-      "company": "InnovateSoft",
-      "role": "Software Engineer",
-      "location": "Bangalore, India",
-      "startDate": "2018-06-01",
-      "endDate": "2020-12-31",
+      "id": "zensar-2022",
+      "company": "Zensar Technologies",
+      "role": "Principal Engineer | Technical Lead",
+      "location": "Bengaluru, India & Warwick, UK",
+      "startDate": "2022-04-01",
+      "endDate": "2025-07-01",
       "highlights": [
-        "Developed and maintained core features of a high-traffic e-commerce platform using **React** and **Redux**.",
-        "Optimized database queries in **PostgreSQL**, reducing page load times by 25%.",
-        "Integrated third-party payment gateways including Stripe and Razorpay."
+        "Led **enterprise-grade SaaS applications** and **cross-functional engineering teams** for **Fortune 500 clients** including Shell and National Grid",
+        "Designed **CI/CD pipelines** reducing deployment cycles from **weekly to daily** with **90%+ test coverage**"
+      ],
+      "projects": [
+        {
+          "name": "National Grid UK",
+          "duration": "1+ Year",
+          "description": [
+            "Built enterprise UI with **Next.js (SSR)**, **React 18**, **TypeScript** with reusable component architecture",
+            "Designed **AWS CI/CD pipelines (CodePipeline, Lambda, S3, CloudFront)** → **weekly to daily deployments**",
+            "Achieved **90%+ test coverage** with **Vitest & Playwright** and **25% faster API responses**",
+            "Owned **frontend architecture** decisions, standards enforcement, and cross-team collaboration"
+          ],
+          "technologies": [
+            "Next.js",
+            "React 18",
+            "TypeScript",
+            "Node.js",
+            "AWS",
+            "Vitest",
+            "Playwright"
+          ]
+        },
+        {
+          "name": "Shell AI Assistant",
+          "duration": "1 Year",
+          "description": [
+            "Designed **enterprise AI assistant** using **OpenAI-based LLMs** and **production RAG pipelines**, **FAISS/Pinecone**, **Node.js microservices**",
+            "**Fine-tuned GPT models** → **reduced support tickets by 20%** with context-aware responses",
+            "Integrated **Azure services (CosmosDB, Redis Cache)** → **25% lower latency**, **15% infrastructure savings**"
+          ],
+          "technologies": [
+            "React",
+            "TypeScript",
+            "LLMs",
+            "RAG",
+            "FAISS",
+            "Pinecone",
+            "Azure",
+            "Node.js"
+          ]
+        },
+        {
+          "name": "Shell FleetHub Modernization",
+          "duration": "1.5 Years",
+          "description": [
+            "Led **React 18 + TypeScript** modernization with **Redux Toolkit + RTK Query** → **40% faster load times**",
+            "Adopted **Micro-Frontend architecture** with **Module Federation** for independent deployments",
+            "Optimized **Azure cloud infrastructure** with **Auto Scaling**, **Load Balancers**, **Redis caching**"
+          ],
+          "technologies": [
+            "React 18",
+            "TypeScript",
+            "Redux Toolkit",
+            "Module Federation",
+            "Azure",
+            "Jest",
+            "Playwright"
+          ]
+        }
       ]
     },
     {
-      "id": "junior-dev-at-start-up-hub",
-      "company": "StartUp Hub",
-      "role": "Junior Developer",
-      "location": "Hyderabad, India",
-      "startDate": "2016-07-01",
-      "endDate": "2018-05-31",
+      "id": "altimetrik-2018",
+      "company": "Altimetrik",
+      "role": "Senior Staff Software Engineer",
+      "location": "Bengaluru, India",
+      "startDate": "2018-08-01",
+      "endDate": "2020-08-01",
       "highlights": [
-        "Built responsive user interfaces for various client projects using **HTML5**, **CSS3**, and **JavaScript**.",
-        "Assisted in the development of RESTful APIs using **Node.js** and **Express**.",
-        "Gained hands-on experience with **Git** version control and Agile methodologies."
-      ]
+        "Owned **full-stack delivery** for **Intuit QuickBooks Online** with **React**, **TypeScript**, **Node.js**, **GraphQL**",
+        "Developed **60+ SEO-optimized landing pages** driving global SMB adoption",
+        "Migrated to **React Hooks** → **30% frontend performance boost** with **95%+ test coverage**",
+        "Automated **AWS deployments (Lambda, EC2, CloudFront)** ensuring **high availability** for millions of users"
+      ],
+      "projects": []
+    },
+    {
+      "id": "mindtree-2014",
+      "company": "Mindtree Ltd",
+      "role": "Technical Lead",
+      "location": "Bengaluru, India",
+      "startDate": "2014-06-01",
+      "endDate": "2018-07-01",
+      "highlights": [
+        "Led **React, Redux, Webpack** development for **Time Inc** media brands",
+        "Built **design system & component library** → **25% faster site builds** across global teams",
+        "Implemented **code-splitting & lazy loading** → **40% Lighthouse/SEO improvement**",
+        "Drove **WCAG 2.0 AA accessibility** compliance and SEO optimization"
+      ],
+      "projects": []
     }
   ],
   "skills": {
-    "frontend": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"],
-    "backend": ["Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"],
-    "cloud": ["AWS (EC2, S3, Lambda)", "Vercel", "Docker", "Kubernetes"],
-    "testing": ["Jest", "Vitest", "Playwright", "Cypress"],
-    "ai": ["OpenAI API", "LangChain", "Vector Databases", "Prompt Engineering"],
-    "architecture": ["Microservices", "Serverless", "Event-Driven Design", "REST/GraphQL"],
-    "coreCompetencies": ["Team Leadership", "Agile/Scrum", "Problem Solving", "System Design"]
+    "coreSkills": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "React Native",
+      "Frontend Architecture",
+      "Micro Frontend",
+      "Module Federation",
+      "Node.js",
+      "REST API",
+      "GraphQL",
+      "AWS",
+      "Azure",
+      "Docker",
+      "CI/CD",
+      "Solution Architecture",
+      "AI Integration",
+      "LLM",
+      "RAG",
+      "Agentic AI",
+      "AI Agents",
+      "SaaS Architecture",
+      "Cloud Native"
+    ],
+    "frontend": [
+      "React.js (8+ years)",
+      "Next.js",
+      "TypeScript (6+ Years)",
+      "Redux/Context API",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Styled Components",
+      "Webpack",
+      "Vite",
+      "Module Federation",
+      "React Native (iOS & Android)",
+      "Design Systems",
+      "Monorepos (Nx/Turbo)"
+    ],
+    "backend": [
+      "Node.js (5+ years)",
+      "Express.js",
+      "Python (3+ Years)",
+      "GraphQL",
+      "REST APIs",
+      "Microservices",
+      "MongoDB",
+      "PostgreSQL",
+      "Redis",
+      "Supabase"
+    ],
+    "cloud": [
+      "AWS (3+ Years)",
+      "Azure (3+ Years)",
+      "Azure DevOps",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+      "GitHub Actions"
+    ],
+    "testing": [
+      "Jest",
+      "Vitest",
+      "React Testing Library",
+      "Cypress",
+      "Playwright",
+      "TDD/BDD",
+      "95%+ code coverage"
+    ],
+    "ai": [
+      "OpenAI",
+      "Google Gemini",
+      "LangChain",
+      "LLMs",
+      "RAG",
+      "Agentic AI",
+      "AI Agents",
+      "AI Sales Agents",
+      "Copilot Agents",
+      "Multi-Agent Orchestration",
+      "n8n",
+      "Prompt Engineering"
+    ],
+    "architecture": [
+      "Micro-Frontends",
+      "Distributed Systems",
+      "Cloud-Native",
+      "API/BFF Patterns",
+      "Event-Driven Systems",
+      "AI-Augmented Solutions",
+      "Agentic AI Architecture",
+      "Multi-Tenant SaaS"
+    ],
+    "coreCompetencies": [
+      "Frontend Architecture",
+      "Product Engineering",
+      "Agile Methodologies",
+      "Test-Driven Development",
+      "AI System Design",
+      "Performance Optimization",
+      "Cross-Functional Leadership"
+    ],
+    "searchKeywords": [
+      "Solution Architect",
+      "AI Solution Architect",
+      "React Architect",
+      "Frontend Lead",
+      "SaaS Engineer",
+      "Cloud Engineer",
+      "AI Engineer",
+      "Technical Lead",
+      "Product Engineer",
+      "Mobile App Engineer"
+    ]
   },
   "education": [
     {
@@ -71,23 +325,21 @@
   ],
   "certifications": [
     {
-      "name": "AWS Certified Solutions Architect – Associate",
-      "issuer": "Amazon Web Services",
-      "year": "2022"
+      "name": "AWS Certified Developer"
+    },
+    {
+      "name": "NodeJs Developer Certification"
+    },
+    {
+      "name": "React JS Advanced"
     }
   ],
   "languages": [
     {
       "language": "English",
-      "proficiency": "Professional Working Proficiency"
-    },
-    {
-      "language": "Telugu",
-      "proficiency": "Native"
-    },
-    {
-      "language": "Hindi",
-      "proficiency": "Full Professional Proficiency"
+      "proficiency": "Fluent"
     }
-  ]
+  ],
+  "availability": "Available for full-time employment and contract roles. Consulting and B2B project delivery available through registered UAE entity (Yexaa Technologies FZCO) when required.. Open to onsite, hybrid, and remote collaboration.",
+  "references": "References and detailed portfolio available upon request"
 }

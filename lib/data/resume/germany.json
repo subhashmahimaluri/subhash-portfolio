@@ -1,11 +1,14 @@
 {
   "personalInfo": {
-    "phone": "+49 151 12345678",
-    "location": "Berlin, Germany",
-    "summary": "Full Stack Engineer with a strong focus on quality, performance, and data privacy. Experienced in working with German tech startups and scale-ups."
+    "title": "Solution Architect | React Architect | Frontend Lead | Next.js | React Native | AI Engineer | 15+ Yrs",
+    "phone": "+971 529128793",
+    "location": "Dubai, UAE | Relocation Ready to Germany/EU",
+    "website": "https://subhashai.cloud",
+    "summary": "**Solution Architect & React Architect** with **15+ years** building **high-scale SaaS platforms** and **cloud-native applications** for **Fortune 500 enterprises**. Expert in **Frontend Architecture (React, Next.js, Micro Frontends)**, **React Native mobile development**, and **AI/LLM Integration (RAG, Vector DBs)**. Proven hands-on engineering leader driving **end-to-end product development** and **cross-functional and distributed team delivery** across **web, iOS, and Android**. Track record of **optimizing system performance by 40%**, **reducing infrastructure costs by 25%**, and delivering **production-grade AI solutions**. Open to Germany/EU relocation with EU Blue Card sponsorship."
   },
-  "gdprNotice": "I hereby consent to the processing of my personal data for recruitment purposes in accordance with the GDPR.",
+  "workAuthorization": "Right to Work: Requires EU Blue Card / Visa Sponsorship | Degree Recognized in Germany",
+  "gdprNotice": "Data processed in accordance with GDPR. Personal data provided with consent for recruitment purposes only.",
   "truncateExperience": 3,
   "maxPages": 2,
-  "languageRequirement": "German: B1 (Intermediate)"
+  "languageRequirement": "English (Fluent) | German (Currently learning)"
 }

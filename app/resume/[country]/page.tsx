@@ -81,8 +81,10 @@ export default async function ResumePage({ params }: ResumePageProps) {
   const country = countrySlug as Country;
   const data: BaseResumeData = getResumeData(country);
 
-  const { personalInfo, professionalSummary, experience, skills, education, certifications, languages } =
-    data;
+  const { personalInfo, experience, skills, education, certifications, languages } = data;
+  // Old resume data carries the summary on personalInfo.summary; newer data may
+  // set a top-level professionalSummary. Prefer the explicit top-level value.
+  const professionalSummary = data.professionalSummary ?? personalInfo.summary;
 
   const showWorkAuthorization = !!data.workAuthorization;
   const hideCertifications = country === 'uk';
