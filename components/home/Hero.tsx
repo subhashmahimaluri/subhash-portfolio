@@ -20,7 +20,8 @@ export function Hero() {
           <p className="bio">
             15+ years building scalable platforms for Fortune 500 enterprises including
             National Grid UK, Shell, and Intuit. Expert in React, Next.js, React Native,
-            TypeScript, AI/LLM systems, and cloud architecture.
+            TypeScript, AI/LLM systems, agentic architecture, harness engineering, and cloud
+            architecture.
           </p>
           <div className="hero-ctas">
             <Link className="btn btn-primary" href="/resume" aria-label="View resume">

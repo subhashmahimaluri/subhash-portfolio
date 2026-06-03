@@ -5,7 +5,6 @@ const NAV_LINKS = [
   { name: 'Portfolio', path: '/portfolio' },
   { name: 'Resume', path: '/resume' },
   { name: 'Education', path: '/education' },
-  { name: 'React Q&A', path: '/react-interview-questions' },
   { name: 'Contact', path: '/contact' },
 ] as const;
 

@@ -162,21 +162,21 @@ describe('generateStaticParams', () => {
 
 describe('generateMetadata', () => {
   it('should generate metadata for a valid country (india)', async () => {
-    const metadata = await generateMetadata({ params: { country: 'india' } });
+    const metadata = await generateMetadata({ params: Promise.resolve({ country: 'india' }) });
     expect(metadata.title).toBe('Resume — India');
     expect(metadata.description).toBe('A highly skilled Software Engineer with 5 years of experience.');
     expect((metadata.openGraph as { type?: string })?.type).toBe('profile');
-    expect(metadata.openGraph?.url).toBe('https://subhashmahimaluri.com/resume/india');
+    expect(metadata.openGraph?.url).toBe('https://subhashai.cloud/resume/india');
   });
 
   it('should generate metadata for a valid country (uk)', async () => {
-    const metadata = await generateMetadata({ params: { country: 'uk' } });
+    const metadata = await generateMetadata({ params: Promise.resolve({ country: 'uk' }) });
     expect(metadata.title).toBe('Resume — United Kingdom');
-    expect(metadata.openGraph?.url).toBe('https://subhashmahimaluri.com/resume/uk');
+    expect(metadata.openGraph?.url).toBe('https://subhashai.cloud/resume/uk');
   });
 
   it('should return a fallback title for an invalid country', async () => {
-    const metadata = await generateMetadata({ params: { country: 'invalid' } });
+    const metadata = await generateMetadata({ params: Promise.resolve({ country: 'invalid' }) });
     expect(metadata.title).toBe('Resume - Not Found');
     expect(metadata.robots).toEqual({ index: false, follow: false });
   });
@@ -186,7 +186,7 @@ describe('generateMetadata', () => {
 describe('ResumePage', () => {
   // AC8: (a) `india` renders name, summary, experience and skills headings, and a Download PDF link whose `href` contains `country=india`;
   it('should render the resume page for India with correct headings and PDF link', async () => {
-    render(await ResumePage({ params: { country: 'india' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'india' }) }));
 
     expect(screen.getByRole('heading', { level: 1, name: 'John Doe' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Professional Summary' })).toBeInTheDocument();
@@ -200,11 +200,11 @@ describe('ResumePage', () => {
     expect(
       screen.getByRole('region', { name: 'Professional Summary' }).querySelector('strong')
     ).toHaveTextContent('Software Engineer');
-    expect(screen.getByRole('heading', { level: 2, name: 'Experience' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Professional Experience' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: 'Dev at Tech Corp' })).toBeInTheDocument();
     // Highlight 'Developed **key features**' is split across nodes by parseMarkdownBold.
-    expect(screen.getByRole('region', { name: 'Experience' })).toHaveTextContent('Developed key features');
-    expect(screen.getByRole('heading', { level: 2, name: 'Skills' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Professional Experience' })).toHaveTextContent('Developed key features');
+    expect(screen.getByRole('heading', { level: 2, name: 'Technical Expertise' })).toBeInTheDocument();
 
     const pdfLink = screen.getByRole('link', { name: /Download PDF/i });
     expect(pdfLink).toBeInTheDocument();
@@ -249,13 +249,13 @@ describe('ResumePage', () => {
       references: 'Provided on file.',
     } as unknown as ReturnType<typeof getResumeData>);
 
-    render(await ResumePage({ params: { country: 'germany' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'germany' }) }));
 
     expect(screen.getByRole('link', { name: /Website of Full User/i })).toHaveAttribute('href', 'https://full.dev');
     expect(screen.getByRole('heading', { level: 4, name: 'Projects:' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Platform' })).toHaveAttribute('href', 'https://proj.dev');
     expect(screen.getByText(/Go, k8s/)).toBeInTheDocument();
-    expect(screen.getByRole('region', { name: 'Skills' })).toHaveTextContent('Leadership');
+    expect(screen.getByRole('region', { name: 'Technical Expertise' })).toHaveTextContent('Leadership');
     expect(screen.getByRole('heading', { level: 2, name: 'Work Authorization' })).toBeInTheDocument();
     expect(screen.getByText('EU Citizen')).toBeInTheDocument();
     expect(screen.getByText('MSc in CS')).toBeInTheDocument();
@@ -266,19 +266,19 @@ describe('ResumePage', () => {
 
   // AC8: (b) `uk` does not render the Certifications heading;
   it('should not render Certifications section for UK', async () => {
-    render(await ResumePage({ params: { country: 'uk' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'uk' }) }));
     expect(screen.queryByRole('heading', { level: 2, name: 'Certifications' })).not.toBeInTheDocument();
   });
 
   // AC8: (c) `uae` renders the Availability heading when the fixture supplies it;
   it('should render Availability section for UAE when data is present', async () => {
-    render(await ResumePage({ params: { country: 'uae' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'uae' }) }));
     expect(screen.getByRole('heading', { level: 2, name: 'Availability' })).toBeInTheDocument();
     expect(screen.getByText('Immediately available for full-time roles.')).toBeInTheDocument();
   });
 
   it('should not render Work Authorization section if data is not present', async () => {
-    render(await ResumePage({ params: { country: 'india' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'india' }) }));
     expect(screen.queryByRole('heading', { level: 2, name: 'Work Authorization' })).not.toBeInTheDocument();
   });
 
@@ -288,42 +288,42 @@ describe('ResumePage', () => {
     const { notFound } = vi.mocked(await import('next/navigation'));
 
     // notFound() throws, so rendering the invalid country rejects before getResumeData runs.
-    await expect(ResumePage({ params: { country: 'unknown' } })).rejects.toThrow('NEXT_NOT_FOUND');
+    await expect(ResumePage({ params: Promise.resolve({ country: 'unknown' }) })).rejects.toThrow('NEXT_NOT_FOUND');
 
     expect(notFound).toHaveBeenCalledTimes(1);
     expect(getResumeData).not.toHaveBeenCalledWith('unknown'); // getResumeData should not be called
   });
 
   it('should render "Available on request" for references if not provided', async () => {
-    render(await ResumePage({ params: { country: 'india' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'india' }) }));
     expect(screen.getByRole('heading', { level: 2, name: 'References' })).toBeInTheDocument();
     expect(screen.getByText('Available on request')).toBeInTheDocument();
   });
 
   it('should render email link with correct attributes', async () => {
-    render(await ResumePage({ params: { country: 'india' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'india' }) }));
     const emailLink = screen.getByText('john@example.com');
     expect(emailLink).toHaveAttribute('href', 'mailto:john@example.com');
     expect(emailLink).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it('should apply correct aria-labelledby and id attributes to sections', async () => {
-    render(await ResumePage({ params: { country: 'india' } }));
+    render(await ResumePage({ params: Promise.resolve({ country: 'india' }) }));
 
     const summarySection = screen.getByRole('region', { name: 'Professional Summary' });
     expect(summarySection).toBeInTheDocument();
     expect(summarySection).toHaveAttribute('aria-labelledby', 'professional-summary-heading');
     expect(screen.getByRole('heading', { level: 2, name: 'Professional Summary' })).toHaveAttribute('id', 'professional-summary-heading');
 
-    const experienceSection = screen.getByRole('region', { name: 'Experience' });
+    const experienceSection = screen.getByRole('region', { name: 'Professional Experience' });
     expect(experienceSection).toBeInTheDocument();
     expect(experienceSection).toHaveAttribute('aria-labelledby', 'experience-heading');
-    expect(screen.getByRole('heading', { level: 2, name: 'Experience' })).toHaveAttribute('id', 'experience-heading');
+    expect(screen.getByRole('heading', { level: 2, name: 'Professional Experience' })).toHaveAttribute('id', 'experience-heading');
 
-    const skillsSection = screen.getByRole('region', { name: 'Skills' });
+    const skillsSection = screen.getByRole('region', { name: 'Technical Expertise' });
     expect(skillsSection).toBeInTheDocument();
     expect(skillsSection).toHaveAttribute('aria-labelledby', 'skills-heading');
-    expect(screen.getByRole('heading', { level: 2, name: 'Skills' })).toHaveAttribute('id', 'skills-heading');
+    expect(screen.getByRole('heading', { level: 2, name: 'Technical Expertise' })).toHaveAttribute('id', 'skills-heading');
 
     const educationSection = screen.getByRole('region', { name: 'Education' });
     expect(educationSection).toBeInTheDocument();

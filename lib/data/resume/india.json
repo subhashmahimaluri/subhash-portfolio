@@ -1,11 +1,5 @@
 {
-  "personalInfo": {
-    "phone": "+91 99999 99999",
-    "location": "Hyderabad, Telangana, India",
-    "summary": "Full Stack Engineer based in Hyderabad, specializing in high-performance web applications and AI integrations for the Indian tech ecosystem."
-  },
-  "workAuthorization": "Authorized to work in India",
-  "skills": {
-    "frontend": ["React", "Next.js", "TypeScript", "HTML5", "CSS3"]
+  "additionalSections": {
+    "targetCompanies": "Interested in Product Companies, Startups, and Enterprise organizations"
   }
 }

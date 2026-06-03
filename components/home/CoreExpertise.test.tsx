@@ -10,6 +10,8 @@ const EXPECTED = [
   'Node.js',
   'Micro Frontends',
   'Agentic AI',
+  'Agent Architecture',
+  'Harness Engineering',
   'AI / LLM Systems',
   'RAG · Vector DBs',
   'Cloud Architecture',
@@ -18,15 +20,15 @@ const EXPECTED = [
 ];
 
 describe('CoreExpertise', () => {
-  it('renders all 12 expertise labels', () => {
+  it('renders all expertise labels', () => {
     render(<CoreExpertise />);
     EXPECTED.forEach((label) => {
       expect(screen.getByText(label)).toBeInTheDocument();
     });
   });
 
-  it('renders exactly 12 chips', () => {
+  it('renders one chip per expertise label', () => {
     const { container } = render(<CoreExpertise />);
-    expect(container.querySelectorAll('.chip-cloud li')).toHaveLength(12);
+    expect(container.querySelectorAll('.chip-cloud li')).toHaveLength(EXPECTED.length);
   });
 });

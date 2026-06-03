@@ -45,11 +45,10 @@ export default function PortfolioPage() {
           </p>
         </header>
 
-        <ul role="list" className="data-grid" style={{ listStyle: 'none', padding: 0 }}>
+        <ul role="list" className="cards-grid" style={{ listStyle: 'none', padding: 0 }}>
           {projects.map((project) => (
             <li key={project.id}>
               <article
-                tabIndex={0}
                 className="data-card"
                 style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
               >

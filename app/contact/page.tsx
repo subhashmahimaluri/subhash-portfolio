@@ -34,10 +34,10 @@ const CHANNELS: ReadonlyArray<Channel> = [
     accessibleName: 'Send an email to Subhash Mahimaluri',
   },
   {
-    label: 'Phone (UAE)',
-    value: '+971 52 912 8793',
-    href: 'tel:+971529128793',
-    accessibleName: 'Call Subhash Mahimaluri in the UAE',
+    label: 'Phone',
+    value: '+91 9980551764',
+    href: 'tel:+919980551764',
+    accessibleName: 'Call Subhash Mahimaluri',
   },
   {
     label: 'LinkedIn',
@@ -86,21 +86,18 @@ export default function ContactPage() {
         </div>
 
         <div className="panel" style={{ marginTop: 'var(--s-8)' }}>
-          <h2>Location &amp; Availability</h2>
+          <h2>Location</h2>
           <div className="prose" style={{ marginTop: 'var(--s-4)' }}>
             <p>
-              <strong>Current location:</strong> Dubai, UAE
+              <strong>Current location:</strong> Bengaluru, India
             </p>
             <p>
-              <strong>Work authorization:</strong> UAE 2-year residence visa
+              <strong>Work authorization:</strong> Indian citizen — open to relocation and visa
+              sponsorship (UAE, UK, EU).
             </p>
             <p>
-              <strong>Availability:</strong> Immediately available for full-time, contract, or
-              consulting opportunities — typically responding within 24 hours.
-            </p>
-            <p>
-              <strong>Markets:</strong> Open to opportunities in India, UAE, Germany, UK, EU, and
-              remote positions globally.
+              <strong>Markets:</strong> Open to opportunities in UAE, Germany, UK, EU, and
+              remote positions globally — typically responding within 24 hours.
             </p>
           </div>
         </div>

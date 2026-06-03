@@ -53,19 +53,6 @@ const QUICK_CARDS: ReadonlyArray<QuickCard> = [
     ),
   },
   {
-    label: 'React Interview Q&A',
-    href: '/react-interview-questions',
-    description: 'A curated library of React interview questions and answers.',
-    icon: (
-      <svg {...iconProps}>
-        <circle cx="12" cy="12" r="2.2" />
-        <ellipse cx="12" cy="12" rx="10" ry="4.2" />
-        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" />
-        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" />
-      </svg>
-    ),
-  },
-  {
     label: 'Contact',
     href: '/contact',
     description: 'Get in touch about roles, consulting, or collaboration.',
