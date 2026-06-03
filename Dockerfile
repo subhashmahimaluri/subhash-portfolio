@@ -22,6 +22,12 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# NEXT_PUBLIC_* are inlined into the client bundle at BUILD time — pass them as
+# build args (docker-compose build.args), not just runtime env.
+ARG NEXT_PUBLIC_SITE_URL=https://subhashai.cloud
+ARG NEXT_PUBLIC_SITE_NAME=subhashai.cloud
+ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL} \
+    NEXT_PUBLIC_SITE_NAME=${NEXT_PUBLIC_SITE_NAME}
 RUN npm run build
 
 # ---------- Runner ----------

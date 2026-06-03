@@ -49,7 +49,6 @@ export default function PortfolioPage() {
           {projects.map((project) => (
             <li key={project.id}>
               <article
-                tabIndex={0}
                 className="data-card"
                 style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
               >

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 import { getResumeData, getAvailableCountries } from '@/lib/data/resume-loader';
+import { SITE_URL } from '@/lib/config/site';
 import {
   Country,
   COUNTRIES,
@@ -73,10 +74,10 @@ export async function generateMetadata({ params }: ResumePageProps): Promise<Met
       type: 'profile',
       title: `Resume — ${countryLabel}`,
       description,
-      url: `https://subhashmahimaluri.com/resume/${country}`,
+      url: `${SITE_URL}/resume/${country}`,
     },
     alternates: {
-      canonical: `https://subhashmahimaluri.com/resume/${country}`,
+      canonical: `${SITE_URL}/resume/${country}`,
     },
   };
 }

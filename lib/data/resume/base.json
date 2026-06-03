@@ -13,14 +13,27 @@
   },
   "experience": [
     {
+      "id": "aeries-2026",
+      "company": "Aeries Technology",
+      "role": "Solution Architect",
+      "location": "Bengaluru, India",
+      "startDate": "2026-04-01",
+      "endDate": "present",
+      "highlights": [
+        "Solution Architect on a strategic enterprise client engagement, defining the **multi-frontend (Micro-Frontend) architecture** and shared platform standards for a large-scale application landscape",
+        "Designing an **AI Agentic Architecture** — copilot agents that assist users and automate workflows across the product suite using modern **LLM orchestration** patterns",
+        "Establishing **frontend architecture**, reusable component standards, and **AI-integration guidelines** across distributed engineering teams"
+      ]
+    },
+    {
       "id": "yexaa-fzco-2025",
       "company": "Yexaa Technologies FZCO",
       "role": "Solution Architect",
       "location": "Dubai, United Arab Emirates",
       "startDate": "2025-07-01",
-      "endDate": "present",
+      "endDate": "2026-03-01",
       "highlights": [
-        "Led the end-to-end design and development of **PlanBPass**, a production-grade **AI-driven SaaS platform** delivering structured decision support across **Web, iOS, and Android**",
+        "As **Solution Architect** and hands-on **individual contributor**, designed and developed **GatheredHQ**, **RexQR**, **PlanBPass**, production-grade **AI-driven SaaS apps** delivering structured decision support across **Web, iOS, and Android**",
         "Architected the complete product stack including **Next.js / React** web frontend, **React Native** mobile applications, **Node.js** services, **Supabase/PostgreSQL** backend, and cloud infrastructure",
         "Designed and implemented a production-ready **AI Advisor system**, leveraging **LLM orchestration**, **Retrieval-Augmented Generation (RAG)**, and advanced prompt engineering to deliver context-aware, reliable responses",
         "Built and shipped **React Native CLI** mobile apps with **Push Notifications (FCM/APNs)**, **Social Authentication (Google, Apple)**, **Subscriptions**, and **In-App Purchases**, ensuring full **App Store** and **Play Store** compliance",
@@ -29,7 +42,7 @@
       ],
       "projects": [
         {
-          "name": "GatheredHQ — Digital Menu & Restaurant SaaS",
+          "name": "GatheredHQ — Digital Menu & Restaurant POS",
           "duration": "2025",
           "link": "https://www.gatheredhq.com/",
           "description": [
@@ -50,6 +63,31 @@
             "PostgreSQL",
             "RLS",
             "Tailwind CSS"
+          ]
+        },
+        {
+          "name": "RexQR — Multi-Tenant Hospitality & Services SaaS",
+          "duration": "2025 – 2026",
+          "link": "https://www.rexqr.com/",
+          "description": [
+            "Architected **RexQR**, a **multi-tenant SaaS** spanning two verticals from a single vertical-aware platform — **Hospitality** (restaurants, cafés, bars) and **Services** (salons, car wash, clinics)",
+            "Designed the backend on **NestJS + Fastify** with strict **domain-driven modules**, **JWT / RBAC** guards, **Zod** validation, and a consistent API response contract over **Supabase / PostgreSQL**",
+            "Built an **AI Sales Agent** (**Google Gemini**) with proactive upsell, smart pairing, and menu-grounded suggestions, plus AI reports, AI menu extraction, and AI translations metered through a per-venue **AI-credit** system",
+            "Shipped full **guest ordering, payments (Stripe Connect, split bill, tips), bookings, waitlist, loyalty & CRM, KDS, and queue/token management** across owner, staff, and guest apps"
+          ],
+          "technologies": [
+            "NestJS",
+            "Fastify",
+            "React",
+            "Vite",
+            "TypeScript",
+            "Supabase",
+            "PostgreSQL",
+            "Stripe",
+            "Redis",
+            "Google Gemini",
+            "Turborepo",
+            "Docker"
           ]
         }
       ]

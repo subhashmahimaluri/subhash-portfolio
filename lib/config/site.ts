@@ -7,7 +7,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://subhashai.
   '',
 );
 
-export const SITE_NAME = 'subhashai.cloud';
+export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'subhashai.cloud';
 export const AUTHOR_NAME = 'Subhash Mahimaluri';
 export const SITE_TITLE = 'Subhash Mahimaluri — Solution Architect, Cloud & AI Systems';
 export const SITE_DESCRIPTION =

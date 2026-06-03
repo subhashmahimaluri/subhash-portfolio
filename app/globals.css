@@ -37,7 +37,7 @@
 
   --text: #0a0a0a;
   --text-soft: #4a5568;
-  --text-faint: #8794a6;
+  --text-faint: #5b6675; /* AA: ~5.2:1 on #f8f9fb (was #8794a6, ~2.9:1) */
   --border: #e5e7eb;
   --hairline: rgba(16, 38, 72, 0.1);
 

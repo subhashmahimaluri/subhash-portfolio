@@ -3,6 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # NEXT_PUBLIC_* must be set at build time (inlined into the bundle).
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://subhashai.cloud}
+        NEXT_PUBLIC_SITE_NAME: ${NEXT_PUBLIC_SITE_NAME:-subhashai.cloud}
     image: subhash-portfolio:latest
     container_name: subhash-portfolio
     ports:
@@ -10,11 +14,17 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3005
-      - NEXT_PUBLIC_SITE_URL=https://subhashai.cloud
-      - NEXT_PUBLIC_SITE_NAME=subhashai.cloud
+      # Server-side runtime values (e.g. used by the PDF route / Chromium path).
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
     restart: unless-stopped
     healthcheck:
-      test: ['CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://localhost:3005/']
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "require('http').get('http://localhost:3005/',r=>process.exit(r.statusCode<400?0:1)).on('error',()=>process.exit(1))",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3

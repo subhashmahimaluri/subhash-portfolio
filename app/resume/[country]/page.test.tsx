@@ -166,13 +166,13 @@ describe('generateMetadata', () => {
     expect(metadata.title).toBe('Resume — India');
     expect(metadata.description).toBe('A highly skilled Software Engineer with 5 years of experience.');
     expect((metadata.openGraph as { type?: string })?.type).toBe('profile');
-    expect(metadata.openGraph?.url).toBe('https://subhashmahimaluri.com/resume/india');
+    expect(metadata.openGraph?.url).toBe('https://subhashai.cloud/resume/india');
   });
 
   it('should generate metadata for a valid country (uk)', async () => {
     const metadata = await generateMetadata({ params: Promise.resolve({ country: 'uk' }) });
     expect(metadata.title).toBe('Resume — United Kingdom');
-    expect(metadata.openGraph?.url).toBe('https://subhashmahimaluri.com/resume/uk');
+    expect(metadata.openGraph?.url).toBe('https://subhashai.cloud/resume/uk');
   });
 
   it('should return a fallback title for an invalid country', async () => {
