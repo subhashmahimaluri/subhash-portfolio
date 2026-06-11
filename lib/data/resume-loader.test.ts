@@ -67,7 +67,7 @@ describe('resume-loader', () => {
     }
   });
 
-  it('does not truncate India / UAE', () => {
+  it('does not truncate India / UAE ', () => {
     for (const c of ['india', 'uae'] as const) {
       expect(getResumeData(c).experience).toHaveLength(base.experience.length);
     }
