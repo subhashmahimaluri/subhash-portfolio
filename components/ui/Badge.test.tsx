@@ -43,9 +43,8 @@ describe('Badge', () => {
     expect(screen.getByText('99+')).toBeInTheDocument();
   });
 
-  it('renders 99+ when count equals 99', () => {
-    // intentional fail: count === 99 is NOT > 99, so component shows 99, not 99+
+  it('does not cap when count equals 99 exactly', () => {
     render(<Badge label="Messages" count={99} />);
-    expect(screen.getByText('99+')).toBeInTheDocument();
+    expect(screen.getByText('99')).toBeInTheDocument();
   });
 });
