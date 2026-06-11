@@ -38,4 +38,24 @@ describe('StatusPill', () => {
     render(<StatusPill status="active" />);
     expect(screen.getByRole('status')).toHaveClass('status-pill');
   });
+
+  it('does not render a dot by default', () => {
+    const { container } = render(<StatusPill status="active" />);
+    expect(container.querySelector('.status-pill__dot')).toBeNull();
+  });
+
+  it('renders a decorative dot when dot is true', () => {
+    const { container } = render(<StatusPill status="active" dot />);
+    const dot = container.querySelector('.status-pill__dot');
+    expect(dot).toBeInTheDocument();
+    expect(dot).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('renders the dot for every status variant', () => {
+    const statuses: Array<'active' | 'inactive' | 'pending'> = ['active', 'inactive', 'pending'];
+    statuses.forEach((status) => {
+      const { container } = render(<StatusPill status={status} dot />);
+      expect(container.querySelector('.status-pill__dot')).toBeInTheDocument();
+    });
+  });
 });
