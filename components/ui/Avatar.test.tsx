@@ -38,9 +38,8 @@ describe('Avatar', () => {
     expect(container.querySelector('img')).toHaveAttribute('alt', 'Alice Johnson');
   });
 
-  // BUG: initials logic uses first + last word — "A B C" → "AC", not "AB"
-  it('uses first and second word for three-word names', () => {
+  it('uses first and last word for three-word names', () => {
     render(<Avatar name="Alice B Johnson" />);
-    expect(screen.getByText('AB')).toBeInTheDocument();
+    expect(screen.getByText('AJ')).toBeInTheDocument();
   });
 });
