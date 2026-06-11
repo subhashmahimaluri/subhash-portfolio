@@ -60,4 +60,14 @@ describe('FeaturedProject', () => {
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
+
+  it('renders the star icon as decorative', () => {
+    render(<FeaturedProject />);
+    expect(screen.getByText('★')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('renders two action links in total', () => {
+    render(<FeaturedProject />);
+    expect(screen.getAllByRole('link')).toHaveLength(2);
+  });
 });
