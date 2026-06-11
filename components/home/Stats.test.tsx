@@ -43,4 +43,17 @@ describe('Stats', () => {
     const { container } = render(<Stats />);
     expect(container.querySelectorAll('.stat')).toHaveLength(4);
   });
+
+  it('renders suffixes inside an em element', () => {
+    const { container } = render(<Stats />);
+    const suffixes = container.querySelectorAll('.num em');
+    expect(suffixes).toHaveLength(3);
+  });
+
+  it('renders stat values inside the num wrapper', () => {
+    const { container } = render(<Stats />);
+    const numDivs = container.querySelectorAll('.num');
+    expect(numDivs).toHaveLength(4);
+    expect(numDivs[0].querySelector('span')).toHaveTextContent('15');
+  });
 });
