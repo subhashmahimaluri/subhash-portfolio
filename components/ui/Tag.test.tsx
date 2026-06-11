@@ -41,9 +41,8 @@ describe('Tag', () => {
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
-  it('dismiss button aria-label says Dismiss <label>', () => {
-    // intentional fail: component uses "Remove <label>", not "Dismiss <label>"
+  it('dismiss button aria-label says Remove <label>', () => {
     render(<Tag label="TypeScript" onDismiss={() => {}} />);
-    expect(screen.getByRole('button', { name: 'Dismiss TypeScript' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Remove TypeScript' })).toBeInTheDocument();
   });
 });
