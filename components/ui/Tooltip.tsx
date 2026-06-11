@@ -8,7 +8,7 @@ interface TooltipProps {
 }
 
 export function Tooltip({ content, children, position = 'top', id }: TooltipProps) {
-  const tooltipId = id ?? `tooltip-${content.replace(/\s+/g, '-').toLowerCase()}`;
+  const tooltipId = id ?? `tooltip-${content.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`;
   return (
     <span className="tooltip-wrapper">
       <span
