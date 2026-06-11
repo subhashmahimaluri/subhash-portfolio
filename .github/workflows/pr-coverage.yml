@@ -31,7 +31,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-script: npm run test:coverage
           head: coverage/coverage-summary.json
-          thresholds: 'lines:85, branches:75'
+          thresholds: '80'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
