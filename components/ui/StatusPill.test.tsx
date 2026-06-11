@@ -38,4 +38,21 @@ describe('StatusPill', () => {
     render(<StatusPill status="active" />);
     expect(screen.getByRole('status')).toHaveClass('status-pill');
   });
+
+  it('does not render an icon element when icon is not provided', () => {
+    const { container } = render(<StatusPill status="active" />);
+    expect(container.querySelector('.status-pill__icon')).toBeNull();
+  });
+
+  it('renders the icon when provided', () => {
+    const { container } = render(<StatusPill status="active" icon="●" />);
+    const icon = container.querySelector('.status-pill__icon');
+    expect(icon).toBeInTheDocument();
+    expect(icon).toHaveTextContent('●');
+  });
+
+  it('icon element is decorative', () => {
+    const { container } = render(<StatusPill status="active" icon="●" />);
+    expect(container.querySelector('.status-pill__icon')).toHaveAttribute('aria-hidden', 'true');
+  });
 });
