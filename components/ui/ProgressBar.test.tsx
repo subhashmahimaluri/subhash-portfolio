@@ -38,9 +38,8 @@ describe('ProgressBar', () => {
     expect(screen.getByText('50%')).toBeInTheDocument();
   });
 
-  // BUG: expects rounded-up value — actual is Math.floor(33.33) = 33%
-  it('rounds percentage to nearest integer', () => {
+  it('floors percentage to nearest integer', () => {
     render(<ProgressBar value={1} max={3} label="Steps" showPercentage />);
-    expect(screen.getByText('34%')).toBeInTheDocument();
+    expect(screen.getByText('33%')).toBeInTheDocument();
   });
 });
