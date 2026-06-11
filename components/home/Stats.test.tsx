@@ -56,4 +56,15 @@ describe('Stats', () => {
     expect(numDivs).toHaveLength(4);
     expect(numDivs[0].querySelector('span')).toHaveTextContent('15');
   });
+
+  it('does not add a variant modifier class for the default variant', () => {
+    render(<Stats />);
+    const section = screen.getByRole('region', { name: 'Career highlights' });
+    expect(section.className).toBe('stats');
+  });
+
+  it('adds stats--minimal class when variant is minimal', () => {
+    render(<Stats variant="minimal" />);
+    expect(screen.getByRole('region', { name: 'Career highlights' })).toHaveClass('stats--minimal');
+  });
 });

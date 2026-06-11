@@ -1,7 +1,13 @@
+type StatsVariant = 'default' | 'minimal';
+
 interface Stat {
   value: string;
   suffix?: string;
   label: string;
+}
+
+interface StatsProps {
+  variant?: StatsVariant;
 }
 
 const STATS: ReadonlyArray<Stat> = [
@@ -11,13 +17,12 @@ const STATS: ReadonlyArray<Stat> = [
   { value: '3', label: 'Fortune 500' },
 ];
 
-/**
- * Career-highlight stats (V2 mock). Static figures — no client-side count-up —
- * so they render server-side and are correct with JS disabled.
- */
-export function Stats() {
+export function Stats({ variant = 'default' }: StatsProps) {
   return (
-    <section className="stats" aria-label="Career highlights">
+    <section
+      className={`stats${variant !== 'default' ? ` stats--${variant}` : ''}`}
+      aria-label="Career highlights"
+    >
       <div className="container">
         <div className="stats-grid">
           {STATS.map((stat) => (
