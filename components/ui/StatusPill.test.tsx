@@ -38,4 +38,19 @@ describe('StatusPill', () => {
     render(<StatusPill status="active" />);
     expect(screen.getByRole('status')).toHaveClass('status-pill');
   });
+
+  it('renders no dot by default', () => {
+    render(<StatusPill status="active" />);
+    expect(document.querySelector('.status-pill__dot')).toBeNull();
+  });
+
+  it('renders a dot when dot prop is true', () => {
+    render(<StatusPill status="active" dot />);
+    expect(document.querySelector('.status-pill__dot')).toBeInTheDocument();
+  });
+
+  it('dot element is hidden from assistive technology', () => {
+    render(<StatusPill status="active" dot />);
+    expect(document.querySelector('.status-pill__dot')).toHaveAttribute('aria-hidden', 'true');
+  });
 });
