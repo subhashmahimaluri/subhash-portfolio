@@ -23,7 +23,7 @@ jobs:
       - run: npm install
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
-      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.7
+      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           mode: baseline
