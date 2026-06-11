@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
+      - run: npm install
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
-      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.6
+      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           mode: baseline
