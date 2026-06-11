@@ -38,4 +38,19 @@ describe('StatusPill', () => {
     render(<StatusPill status="active" />);
     expect(screen.getByRole('status')).toHaveClass('status-pill');
   });
+
+  it('defaults to md size', () => {
+    render(<StatusPill status="active" />);
+    expect(screen.getByRole('status')).toHaveClass('status-pill--md');
+  });
+
+  it('applies sm size class', () => {
+    render(<StatusPill status="active" size="sm" />);
+    expect(screen.getByRole('status')).toHaveClass('status-pill--sm');
+  });
+
+  it('applies lg size class', () => {
+    render(<StatusPill status="pending" size="lg" />);
+    expect(screen.getByRole('status')).toHaveClass('status-pill--lg');
+  });
 });
