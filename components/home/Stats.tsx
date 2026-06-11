@@ -4,6 +4,10 @@ interface Stat {
   label: string;
 }
 
+interface StatsProps {
+  compact?: boolean;
+}
+
 const STATS: ReadonlyArray<Stat> = [
   { value: '15', suffix: '+', label: 'Years' },
   { value: '40', suffix: '%', label: 'Perf Gains' },
@@ -11,13 +15,9 @@ const STATS: ReadonlyArray<Stat> = [
   { value: '3', label: 'Fortune 500' },
 ];
 
-/**
- * Career-highlight stats (V2 mock). Static figures — no client-side count-up —
- * so they render server-side and are correct with JS disabled.
- */
-export function Stats() {
+export function Stats({ compact = false }: StatsProps) {
   return (
-    <section className="stats" aria-label="Career highlights">
+    <section className={`stats${compact ? ' stats--compact' : ''}`} aria-label="Career highlights">
       <div className="container">
         <div className="stats-grid">
           {STATS.map((stat) => (

@@ -56,4 +56,14 @@ describe('Stats', () => {
     expect(numDivs).toHaveLength(4);
     expect(numDivs[0].querySelector('span')).toHaveTextContent('15');
   });
+
+  it('does not apply compact class by default', () => {
+    render(<Stats />);
+    expect(screen.getByRole('region', { name: 'Career highlights' })).not.toHaveClass('stats--compact');
+  });
+
+  it('applies compact class when compact prop is true', () => {
+    render(<Stats compact />);
+    expect(screen.getByRole('region', { name: 'Career highlights' })).toHaveClass('stats--compact');
+  });
 });
