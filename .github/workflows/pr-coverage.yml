@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pr-coverage-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   coverage:
@@ -26,11 +26,12 @@ jobs:
       - run: npm ci
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
-      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.5
+      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-script: npm run test:coverage
           head: coverage/coverage-summary.json
+          test-failures: test-results.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
