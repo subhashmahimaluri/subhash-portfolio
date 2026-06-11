@@ -24,12 +24,10 @@ jobs:
       - run: npm ci
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
-      - name: Run tests with coverage
-        run: npm run test:coverage
-        continue-on-error: true
-      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.0
+      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-script: npm run test:coverage
           head: coverage/coverage-summary.json
       - uses: actions/upload-artifact@v4
         if: always()

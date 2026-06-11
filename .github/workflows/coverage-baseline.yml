@@ -23,9 +23,9 @@ jobs:
       - run: npm ci
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
-      - run: npm run test:coverage
-      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.0
+      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2.0.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           mode: baseline
+          run-script: npm run test:coverage
           coverage: coverage/coverage-summary.json
