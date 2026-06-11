@@ -24,6 +24,7 @@ export default defineConfig({
         '**/*.spec.{ts,tsx}',
         '**/__tests__/**',
       ],
+      reporter: ['text', 'json-summary'],
       thresholds: {
         lines: 90,
         functions: 90,

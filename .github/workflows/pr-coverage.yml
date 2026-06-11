@@ -1,0 +1,39 @@
+name: PR coverage
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pr-coverage-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Run tests with coverage
+        run: npm run test:coverage
+        continue-on-error: true
+      - uses: subhashmahimaluri/vite-pr-coverage-insight@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          head: coverage/coverage-summary.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: |
+            coverage-report.json
+            coverage-report.html
+          if-no-files-found: warn
