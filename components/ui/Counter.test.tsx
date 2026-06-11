@@ -33,13 +33,12 @@ describe('Counter', () => {
     expect(screen.getByText('99+')).toBeInTheDocument();
   });
 
-  it('displays max+ when value equals max exactly', () => {
-    render(<Counter value={99} label="Score" max={99} />);
+  it('displays max+ when value is one above max', () => {
+    render(<Counter value={100} label="Score" max={99} />);
     expect(screen.getByText('99+')).toBeInTheDocument();
   });
 
-  // BUG: value === max is not "exceeding" max — should display 99, not 99+
-  it('displays the exact value when value equals max', () => {
+  it('does not cap when value equals max exactly', () => {
     render(<Counter value={99} label="Score" max={99} />);
     expect(screen.getByText('99')).toBeInTheDocument();
   });
