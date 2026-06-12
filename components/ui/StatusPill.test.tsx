@@ -38,4 +38,16 @@ describe('StatusPill', () => {
     render(<StatusPill status="active" />);
     expect(screen.getByRole('status')).toHaveClass('status-pill');
   });
+
+  it('is not disabled by default', () => {
+    render(<StatusPill status="active" />);
+    expect(screen.getByRole('status')).not.toHaveAttribute('aria-disabled');
+  });
+
+  it('applies disabled class and aria-disabled when disabled', () => {
+    render(<StatusPill status="active" disabled />);
+    const el = screen.getByRole('status');
+    expect(el).toHaveClass('status-pill--disabled');
+    expect(el).toHaveAttribute('aria-disabled', 'true');
+  });
 });

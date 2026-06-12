@@ -3,6 +3,7 @@ type PillStatus = 'active' | 'inactive' | 'pending';
 interface StatusPillProps {
   status: PillStatus;
   label?: string;
+  disabled?: boolean;
 }
 
 const STATUS_LABELS: Record<PillStatus, string> = {
@@ -11,10 +12,14 @@ const STATUS_LABELS: Record<PillStatus, string> = {
   pending: 'Pending',
 };
 
-export function StatusPill({ status, label }: StatusPillProps) {
+export function StatusPill({ status, label, disabled = false }: StatusPillProps) {
   const text = label ?? STATUS_LABELS[status];
   return (
-    <span className={`status-pill status-pill--${status}`} role="status">
+    <span
+      className={`status-pill status-pill--${status}${disabled ? ' status-pill--disabled' : ''}`}
+      role="status"
+      aria-disabled={disabled || undefined}
+    >
       {text}
     </span>
   );
