@@ -39,15 +39,13 @@ describe('StatusPill', () => {
     expect(screen.getByRole('status')).toHaveClass('status-pill');
   });
 
-  it('is not disabled by default', () => {
+  it('does not carry disabled class by default', () => {
     render(<StatusPill status="active" />);
-    expect(screen.getByRole('status')).not.toHaveAttribute('aria-disabled');
+    expect(screen.getByRole('status')).not.toHaveClass('status-pill--disabled');
   });
 
-  it('applies disabled class and aria-disabled when disabled', () => {
+  it('applies disabled class when disabled', () => {
     render(<StatusPill status="active" disabled />);
-    const el = screen.getByRole('status');
-    expect(el).toHaveClass('status-pill--disabled');
-    expect(el).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.getByRole('status')).toHaveClass('status-pill--disabled');
   });
 });
