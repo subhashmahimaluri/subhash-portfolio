@@ -18,6 +18,7 @@ export function StatusPill({ status, label, disabled = false }: StatusPillProps)
     <span
       className={`status-pill status-pill--${status}${disabled ? ' status-pill--disabled' : ''}`}
       role="status"
+      aria-disabled={disabled || undefined}
     >
       {text}
     </span>
