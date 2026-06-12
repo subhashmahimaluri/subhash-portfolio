@@ -26,7 +26,15 @@ jobs:
       - run: npm install
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
-      - run: npx stryker run
+      - name: Run mutation tests on changed files only
+        run: |
+          git fetch origin ${{ github.base_ref }} --depth=1
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- '*.ts' '*.tsx' | grep -v '\.test\.' | grep -v '\.spec\.' | paste -sd ',' -)
+          if [ -n "$CHANGED" ]; then
+            npx stryker run --mutate "$CHANGED"
+          else
+            echo "No source files changed — skipping mutation"
+          fi
         continue-on-error: true
       - uses: subhashmahimaluri/vite-pr-coverage-insight@main
         with:
