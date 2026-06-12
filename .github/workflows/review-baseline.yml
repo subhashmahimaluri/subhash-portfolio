@@ -1,0 +1,29 @@
+name: Review baseline
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: review-baseline
+  cancel-in-progress: true
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+      - uses: subhashmahimaluri/pr-review-insight@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          mode: baseline

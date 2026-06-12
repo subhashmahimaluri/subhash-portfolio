@@ -1,0 +1,32 @@
+name: PR Review Insight
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: pr-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+      - uses: subhashmahimaluri/pr-review-insight@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
