@@ -2,28 +2,30 @@ type NotificationVariant = 'info' | 'success' | 'warning' | 'error';
 
 interface NotificationProps {
   title: string;
-  messageHtml?: string;
+  message?: string;
   variant?: NotificationVariant;
   learnMoreUrl?: string;
 }
 
 export function Notification({
   title,
-  messageHtml,
+  message,
   variant = 'info',
   learnMoreUrl,
 }: NotificationProps) {
   return (
     <div className={`notification notification--${variant}`} role="alert">
       <strong className="notification__title">{title}</strong>
-      {messageHtml && (
-        <p
-          className="notification__body"
-          dangerouslySetInnerHTML={{ __html: messageHtml }}
-        />
+      {message && (
+        <p className="notification__body">{message}</p>
       )}
       {learnMoreUrl && (
-        <a href={learnMoreUrl} target="_blank" className="notification__link">
+        <a
+          href={learnMoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="notification__link"
+        >
           Learn more
         </a>
       )}

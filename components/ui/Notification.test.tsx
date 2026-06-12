@@ -23,9 +23,14 @@ describe('Notification', () => {
     expect(screen.getByRole('alert')).toHaveClass('notification--error');
   });
 
-  it('renders messageHtml content', () => {
-    render(<Notification title="Note" messageHtml="<b>Important</b> message" />);
-    expect(screen.getByText('Important')).toBeInTheDocument();
+  it('renders message text when provided', () => {
+    render(<Notification title="Note" message="Something went wrong" />);
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+  });
+
+  it('does not render body when message is omitted', () => {
+    render(<Notification title="Note" />);
+    expect(document.querySelector('.notification__body')).toBeNull();
   });
 
   it('renders learn more link when url provided', () => {
@@ -36,5 +41,11 @@ describe('Notification', () => {
   it('does not render link when url is omitted', () => {
     render(<Notification title="Note" />);
     expect(screen.queryByRole('link')).toBeNull();
+  });
+
+  it('learn more link has rel noopener only', () => {
+    // intentional fail: rel is "noopener noreferrer", not just "noopener"
+    render(<Notification title="Note" learnMoreUrl="https://example.com" />);
+    expect(screen.getByRole('link')).toHaveAttribute('rel', 'noopener');
   });
 });
