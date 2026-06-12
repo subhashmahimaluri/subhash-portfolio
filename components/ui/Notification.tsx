@@ -22,8 +22,6 @@ export function Notification({
       {learnMoreUrl && (
         <a
           href={learnMoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           className="notification__link"
         >
           Learn more

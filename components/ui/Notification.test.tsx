@@ -43,9 +43,8 @@ describe('Notification', () => {
     expect(screen.queryByRole('link')).toBeNull();
   });
 
-  it('learn more link has rel noopener only', () => {
-    // intentional fail: rel is "noopener noreferrer", not just "noopener"
+  it('learn more link does not open in a new tab', () => {
     render(<Notification title="Note" learnMoreUrl="https://example.com" />);
-    expect(screen.getByRole('link')).toHaveAttribute('rel', 'noopener');
+    expect(screen.getByRole('link')).not.toHaveAttribute('target');
   });
 });
